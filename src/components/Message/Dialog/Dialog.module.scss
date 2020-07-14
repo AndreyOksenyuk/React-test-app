@@ -1,0 +1,62 @@
+.dialog {
+   &_inner {
+      width: 400px;
+      height: 98%;
+      background-color: #fff;
+      margin: auto 20px 0;
+      padding: 20px;
+   }
+}
+
+.messages {
+   display: grid;
+   grid-template-columns: 200px 1fr;
+   grid-template-rows: 1fr;
+   width: 100%;
+   height: 100%;
+}
+.listDialogs {
+   display: flex;
+   flex-direction: column;
+   background-color: #ccc;
+
+   a {
+      color: #000;
+      text-decoration: none;
+
+   }
+}
+
+.active {
+   .listItem {
+      background-color: rgb(233, 233, 233);
+
+      p {
+         color: rgb(214, 203, 41);
+      }
+   }
+}
+
+.listItem {
+   display: flex;
+   align-items: center;
+   width: 100%;
+   height: 60px;
+   background-color: #fff;
+   border: 1px #ccc solid;
+   margin-bottom: 5px;
+   cursor: pointer;
+}
+
+.listItem {
+   img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin: 0 10px 0 5px;
+   }
+
+   p {
+      font-weight: 700;
+   }
+}
