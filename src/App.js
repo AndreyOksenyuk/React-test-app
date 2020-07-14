@@ -11,23 +11,45 @@ import Music from './components/Music/Music';
 import Setting from './components/Settings/Settings';
 
 function App(props) {
-  return (
-    <BrowserRouter>
-      <div className="App">
-          <Header/>
-          <Nav/>
-          <div className="mainContent">
-            <Route path="/profile" render={() => <Profile posts={props.posts}/>} />
-            <Route path="/message" render={() => <Message dialogs={props.dialogs} message={props.message}/>} />
-            <Route path="/news" component={News} />
-            <Route path="/music" component={Music} />
-            <Route path="/setting" component={Setting} />
-          </div>
-          <Footer/>
-      </div>
-    </BrowserRouter>
+   return (
+      <BrowserRouter>
+         <div className="App">
+            <Header />
+            <Nav />
+            <div className="mainContent">
+               <Route
+                  path="/profile"
+                  render={() => <Profile
+                     posts={props.state.profilePage.posts} />}
+               />
 
-  );
+               <Route
+                  path="/message"
+                  render={() => <Message
+                     dialogs={props.state.messagePage.dialogs}
+                     message={props.state.messagePage.message} />}
+               />
+
+               <Route 
+                  path="/news" 
+                  render={() => <News news={props.state.newsPage.news} />}
+               />
+
+               <Route 
+                  path="/music" 
+                  component={Music} 
+               />
+
+               <Route 
+                  path="/setting" 
+                  component={Setting} 
+               />
+            </div>
+            <Footer />
+         </div>
+      </BrowserRouter>
+
+   );
 }
 
 export default App;

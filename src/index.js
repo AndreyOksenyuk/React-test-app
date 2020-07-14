@@ -8,11 +8,7 @@ import state from './State'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App 
-      dialogs={state.dialogs} 
-      message={state.message} 
-      posts={state.posts}
-    />
+    <App state={state}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
