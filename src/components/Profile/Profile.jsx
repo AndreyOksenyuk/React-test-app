@@ -16,7 +16,7 @@ const Profile = (props) => {
       <User/>
 
       <div className={s.posts}>
-         <AddPost />
+         <AddPost addPost={props.addPost} />
             {props.posts.map((post) => {
                return <Posts key={post.id} posts={post} />
             })}

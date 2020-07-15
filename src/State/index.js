@@ -1,3 +1,5 @@
+import { renderEntireTree } from "../render";
+
 let state = {
    profilePage: {
       posts: [{
@@ -20,7 +22,7 @@ let state = {
             user: 'Ivan',
             message: 'Bye!'
          }
-      ],
+      ],   
    },
 
    messagePage: {
@@ -81,3 +83,13 @@ let state = {
 };
 
 export default state;
+
+export function addPost(message) {
+   let newPost = {
+      id: new Date(),
+      user: 'User name',
+      message: message,
+   }
+   state.profilePage.posts.push(newPost)
+   renderEntireTree(state);
+}

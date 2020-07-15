@@ -2,6 +2,7 @@
 .dialog {
    display: flex;
    background-color: rgba(224, 224, 224, 0.986);
+   flex-direction: column;
 }
 
 .messages {

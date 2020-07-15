@@ -6,9 +6,10 @@ const DialogMessage = ({message}) => {
    return (
       <div className={s.dialog_inner}>
          {message.map(m => {
-            return <p key={m.id}>{m.message}</p>
+            return <p key={m.id}> {m.message} </p>
          })}
       </div>
+      
    )
 }
 

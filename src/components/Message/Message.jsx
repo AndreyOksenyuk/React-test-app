@@ -2,6 +2,7 @@ import React from 'react';
 import s from './Message.module.scss'
 import Dialogs from './Dialog/Dialogs';
 import DialogMessage from './Dialog/DialogMessage';
+import AddMessage from './AddMessage';
 
 const Message = (props) => {
    return (
@@ -14,7 +15,9 @@ const Message = (props) => {
 
          <div className={s.dialog}>
             <DialogMessage message={props.message}/>
+            <AddMessage />
          </div>
+
       </div>
 
    )
