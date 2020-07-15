@@ -1,4 +1,6 @@
-import { renderEntireTree } from "../render";
+let renderEntireTree = () => {
+   console.log('rerender');
+}
 
 let state = {
    profilePage: {
@@ -100,3 +102,6 @@ export function newPostFun(text) {
    renderEntireTree(state);
 }
 
+export const subscribe = (observer) => {
+   renderEntireTree = observer;
+}
