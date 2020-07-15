@@ -10,7 +10,6 @@ const Posts = (props) => {
             <img src={img} alt="ava" className={s.img}/>
             <p>{props.posts.message}</p>
          </div>
-         <span>Like</span>
       </div>
 
    )

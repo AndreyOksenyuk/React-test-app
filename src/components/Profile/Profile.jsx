@@ -7,7 +7,6 @@ import User from './User/User';
 
 
 const Profile = (props) => {
-
    return ( 
    <div className={s.profile}>
 
@@ -16,7 +15,11 @@ const Profile = (props) => {
       <User/>
 
       <div className={s.posts}>
-         <AddPost addPost={props.addPost} />
+         <AddPost 
+            addPost={props.addPost} 
+            newPostFun={props.newPostFun} 
+            newPostText={props.newPostText}
+         />
             {props.posts.map((post) => {
                return <Posts key={post.id} posts={post} />
             })}

@@ -22,7 +22,9 @@ function App(props) {
                   
                   render={() => <Profile
                      posts={props.state.profilePage.posts}
-                     addPost={props.addPost} />}
+                     newPostText={props.state.profilePage.newPostText}
+                     addPost={props.addPost} 
+                     newPostFun={props.newPostFun} />}
                />
 
                <Route
