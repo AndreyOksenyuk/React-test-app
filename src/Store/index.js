@@ -1,8 +1,5 @@
-let renderEntireTree = () => {
-   console.log('rerender');
-}
-
-let state = {
+let store = {
+   _state: {
    profilePage: {
       newPostText: '',
       posts: [{
@@ -83,25 +80,36 @@ let state = {
       news: 'NEWS state'
    }
 
-};
-
-export default state;
-
-export function addPost() {
+   },
+   getState() {
+      return this._state;
+   },  
+   _callSubscriber () {
+   console.log(this.getState().profilePage.newPostText);
+   },
+   addPost() {
    let newPost = {
-      id: Date.parse(new Date().toString()),
-      user: 'User name',
-      message: state.profilePage.newPostText,
-   }
-   state.profilePage.posts.push(newPost)
-   renderEntireTree(state);
+         id: Date.parse(new Date().toString()),
+         user: 'User name',
+         message: this._state.profilePage.newPostText,
+      }
+      this._state.profilePage.posts.push(newPost)
+      this._callSubscriber(this._state);
+   },
+   newPostFun(text) {
+      this._state.profilePage.newPostText = text;
+      this._callSubscriber(this._state);
+   },
+   subscribe (observer) {
+      this._callSubscriber = observer;
+   },
+
 }
 
-export function newPostFun(text) {
-   state.profilePage.newPostText = text;
-   renderEntireTree(state);
-}
+export default store;
 
-export const subscribe = (observer) => {
-   renderEntireTree = observer;
-}
+
+
+
+
+
