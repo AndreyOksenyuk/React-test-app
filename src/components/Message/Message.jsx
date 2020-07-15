@@ -8,13 +8,13 @@ const Message = (props) => {
    return (
       <div className={s.messages}>
          <div className={s.listDialogs}>
-            {props.dialogs.map(dialog => {
+            {props.state.messagePage.dialogs.map(dialog => {
                return <Dialogs dialog={dialog} key={dialog.id}/>
             })}
          </div>
 
          <div className={s.dialog}>
-            <DialogMessage message={props.message}/>
+            <DialogMessage state={props.state}/>
             <AddMessage />
          </div>
 

@@ -16,11 +16,10 @@ const Profile = (props) => {
 
       <div className={s.posts}>
          <AddPost 
-            addPost={props.addPost} 
-            newPostFun={props.newPostFun} 
-            newPostText={props.newPostText}
+            dispatch={props.dispatch} 
+            state={props.state}
          />
-            {props.posts.map((post) => {
+            {props.state.profilePage.posts.map((post) => {
                return <Posts key={post.id} posts={post} />
             })}
       </div>

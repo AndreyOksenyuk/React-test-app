@@ -6,20 +6,29 @@ const AddPost = (props) => {
    let addPosts = function (event) {
       event.preventDefault()
       const post = newPost.current.value;
-      if(post)props.addPost()
-      props.newPostFun("")
-   }
+      if(post){
+         props.dispatch({
+            type: 'ADD-POST',
+         })
+         props.state.profilePage.newPostText = ''
+      } 
+   };
+
    let changePost = function() {
       let post = newPost.current.value;
-      props.newPostFun(post)
+      props.dispatch({
+         type: 'NEW-POST',
+         text: post
+      })
    }
+   
    return (
       <div className = {s.addPost}>
          <form>
             <textarea 
                ref={newPost} 
                type="text" 
-               value={props.newPostText}
+               value={props.state.profilePage.newPostText}
                onChange={changePost}
             />
             <button 

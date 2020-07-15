@@ -21,22 +21,19 @@ function App(props) {
                   path="/profile"
                   
                   render={() => <Profile
-                     posts={props.state.profilePage.posts}
-                     newPostText={props.state.profilePage.newPostText}
-                     addPost={props.addPost} 
-                     newPostFun={props.newPostFun} />}
+                     state={props.state}
+                     dispatch={props.dispatch} />}
                />
 
                <Route
                   path="/message"
                   render={() => <Message
-                     dialogs={props.state.messagePage.dialogs}
-                     message={props.state.messagePage.message} />}
+                     state={props.state} />}
                />
 
                <Route 
                   path="/news" 
-                  render={() => <News news={props.state.newsPage.news} />}
+                  render={() => <News state={props.state} />}
                />
 
                <Route 

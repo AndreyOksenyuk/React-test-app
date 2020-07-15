@@ -5,13 +5,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 
-let renderEntireTree = () => {
+let renderEntireTree = (_state) => {
    ReactDOM.render(
    <React.StrictMode>
       <App 
          state={store._state} 
-         addPost={store.addPost.bind(store)} 
-         newPostFun={store.newPostFun.bind(store)} 
+         dispatch={store.dispatch.bind(store)} 
       />
    </React.StrictMode>,
    document.getElementById('root')

@@ -85,24 +85,27 @@ let store = {
       return this._state;
    },  
    _callSubscriber () {
-   console.log(this.getState().profilePage.newPostText);
-   },
-   addPost() {
-   let newPost = {
-         id: Date.parse(new Date().toString()),
-         user: 'User name',
-         message: this._state.profilePage.newPostText,
-      }
-      this._state.profilePage.posts.push(newPost)
-      this._callSubscriber(this._state);
-   },
-   newPostFun(text) {
-      this._state.profilePage.newPostText = text;
-      this._callSubscriber(this._state);
+   
    },
    subscribe (observer) {
       this._callSubscriber = observer;
    },
+
+   dispatch(action) {
+      if (action.type === 'ADD-POST') {
+         let newPost = {
+            id: Date.parse(new Date().toString()),
+            user: 'User name',
+            message: this._state.profilePage.newPostText,
+         }
+         this._state.profilePage.posts.push(newPost)
+         this._callSubscriber(this._state);
+      }
+      else if (action.type === 'NEW-POST') {
+         this._state.profilePage.newPostText = action.text;
+         this._callSubscriber(this._state);
+      }
+   }
 
 }
 
