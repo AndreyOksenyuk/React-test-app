@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './AddPost.module.scss'
-import {actionCreatorAddPost, actionCreatorChangePost} from '../../../../Store'
+import {actionCreatorAddPost, actionCreatorChangePost} from '../../../../Redux/profile-reducer'
 
 const AddPost = (props) => {
    let newPost = React.createRef();

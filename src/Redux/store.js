@@ -1,10 +1,5 @@
 import PROFILE_REDUCER from './profile-reducer'
-import MESSAGE_REDUCER from './message-reducer copy'
-
-const ADD_POST = 'ADD-POST';
-const NEW_POST = 'NEW-POST';
-const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
-const CHANGE_NEW_MESSAGE = 'CHANGE-NEW-MESSAGE'
+import MESSAGE_REDUCER from './message-reducer'
 
 let store = {
    _state: {
@@ -109,22 +104,6 @@ let store = {
       this._callSubscriber(this._state);
    }
 }
-
-export let actionCreatorAddPost = () => ({type: ADD_POST,})
-export let actionCreatorChangePost = (text) => ({
-      type: NEW_POST,
-      text: text,
-   })
-
-export let actionCreatorAddMessage = () => ({type: ADD_NEW_MESSAGE,})
-export let actionCreatorChangeMessage = (message) => ({
-      type: CHANGE_NEW_MESSAGE,
-      message: message,
-   })
-
-      
-   
-
 
 export default store;
 

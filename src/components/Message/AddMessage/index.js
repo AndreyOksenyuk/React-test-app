@@ -1,6 +1,6 @@
 import React from 'react';
 import './AddMessage.scss'
-import {actionCreatorAddMessage, actionCreatorChangeMessage} from '../../../Store'
+import {actionCreatorAddMessage, actionCreatorChangeMessage} from '../../../Redux/message-reducer'
 
 const AddMessage = (props) => {
    let textarea = React.createRef();
