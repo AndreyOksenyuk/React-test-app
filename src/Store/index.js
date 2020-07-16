@@ -1,3 +1,6 @@
+import PROFILE_REDUCER from './profile-reducer'
+import MESSAGE_REDUCER from './message-reducer copy'
+
 const ADD_POST = 'ADD-POST';
 const NEW_POST = 'NEW-POST';
 const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
@@ -99,32 +102,11 @@ let store = {
    },
 
    dispatch(action) {
-      if (action.type === ADD_POST) {
-         let newPost = {
-            id: Date.parse(new Date().toString()),
-            user: 'User name',
-            message: this._state.profilePage.newPostText,
-         }
-         this._state.profilePage.posts.push(newPost)
-         this._callSubscriber(this._state);
-      }
-      else if (action.type === NEW_POST) {
-         this._state.profilePage.newPostText = action.text;
-         this._callSubscriber(this._state);
-      }
 
-      else if (action.type === ADD_NEW_MESSAGE) {
-         let message = {
-            id: Date.parse(new Date().toString()),
-            message: this._state.messagePage.addNewMessage
-         }
-         this._state.messagePage.message.push(message)
-         this._callSubscriber(this._state);
-      }
-      else if (action.type === CHANGE_NEW_MESSAGE) {
-         this._state.messagePage.addNewMessage = action.message;
-         this._callSubscriber(this._state);
-      }
+      PROFILE_REDUCER(action, this._state.profilePage)
+      MESSAGE_REDUCER(action, this._state.messagePage)
+
+      this._callSubscriber(this._state);
    }
 }
 
