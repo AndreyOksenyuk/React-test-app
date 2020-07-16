@@ -28,6 +28,7 @@ function App(props) {
                <Route
                   path="/message"
                   render={() => <Message
+                     dispatch={props.dispatch}
                      state={props.state} />}
                />
 

@@ -15,7 +15,10 @@ const Message = (props) => {
 
          <div className={s.dialog}>
             <DialogMessage state={props.state}/>
-            <AddMessage />
+            <AddMessage 
+               state={props.state.messagePage}
+               dispatch={props.dispatch}
+            />
          </div>
 
       </div>

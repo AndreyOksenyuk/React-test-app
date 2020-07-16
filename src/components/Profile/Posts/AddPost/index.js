@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './AddPost.module.scss'
+import {actionCreatorAddPost, actionCreatorChangePost} from '../../../../Store'
 
 const AddPost = (props) => {
    let newPost = React.createRef();
@@ -7,19 +8,14 @@ const AddPost = (props) => {
       event.preventDefault()
       const post = newPost.current.value;
       if(post){
-         props.dispatch({
-            type: 'ADD-POST',
-         })
+         props.dispatch(actionCreatorAddPost())
          props.state.profilePage.newPostText = ''
       } 
    };
 
    let changePost = function() {
       let post = newPost.current.value;
-      props.dispatch({
-         type: 'NEW-POST',
-         text: post
-      })
+      props.dispatch(actionCreatorChangePost(post))
    }
    
    return (
