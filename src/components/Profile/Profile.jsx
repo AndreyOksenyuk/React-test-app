@@ -2,9 +2,8 @@ import React from 'react';
 import s from './Profile.module.scss'
 import TopImg from './TopImg';
 import Posts from './Posts/Posts';
-import AddPost from './Posts/AddPost';
+import AddPostContainer from './Posts/AddPost/AddPostContainer';
 import User from './User/User';
-
 
 const Profile = (props) => {
    return ( 
@@ -15,11 +14,9 @@ const Profile = (props) => {
       <User/>
 
       <div className={s.posts}>
-         <AddPost 
-            dispatch={props.dispatch} 
-            state={props.state}
-         />
-            {props.state.profilePage.posts.map((post) => {
+         <AddPostContainer store={props.store}/>
+
+            {props.store.getState().profilePage.posts.map((post) => {
                return <Posts key={post.id} posts={post} />
             })}
       </div>

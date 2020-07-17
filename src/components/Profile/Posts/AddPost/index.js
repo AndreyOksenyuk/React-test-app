@@ -1,21 +1,21 @@
 import React from 'react';
 import s from './AddPost.module.scss'
-import {actionCreatorAddPost, actionCreatorChangePost} from '../../../../Redux/profile-reducer'
 
 const AddPost = (props) => {
+
    let newPost = React.createRef();
-   let addPosts = function (event) {
+
+   let onAddPosts = function (event) {
       event.preventDefault()
       const post = newPost.current.value;
       if(post){
-         props.dispatch(actionCreatorAddPost())
-         props.state.profilePage.newPostText = ''
+         props.addPost()
       } 
    };
 
-   let changePost = function() {
+   let onChangePost = function() {
       let post = newPost.current.value;
-      props.dispatch(actionCreatorChangePost(post))
+      props.changePost(post)
    }
    
    return (
@@ -24,12 +24,12 @@ const AddPost = (props) => {
             <textarea 
                ref={newPost} 
                type="text" 
-               value={props.state.profilePage.newPostText}
-               onChange={changePost}
+               value={props.value}
+               onChange={onChangePost}
             />
             <button 
                type="submit"  
-               onClick={addPosts} 
+               onClick={onAddPosts} 
             >add post
             </button>
          </form>

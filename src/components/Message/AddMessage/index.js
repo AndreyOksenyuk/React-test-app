@@ -1,6 +1,5 @@
 import React from 'react';
 import './AddMessage.scss'
-import {actionCreatorAddMessage, actionCreatorChangeMessage} from '../../../Redux/message-reducer'
 
 const AddMessage = (props) => {
    let textarea = React.createRef();
@@ -8,15 +7,14 @@ const AddMessage = (props) => {
       let addMessage = function(event) {
          event.preventDefault()
          if (textarea.current.value) {
-            props.dispatch(actionCreatorAddMessage())
-            props.state.addNewMessage = '' 
+            props.addMessage()
          }
 
       }
 
       let onchangeMessage = function() {
          let message = textarea.current.value;
-         props.dispatch(actionCreatorChangeMessage(message))
+         props.onchangeMessage(message)
       }
 
    return (
@@ -26,7 +24,7 @@ const AddMessage = (props) => {
                name="addMessage" 
                ref={textarea}
                onChange={onchangeMessage}
-               value={props.state.addNewMessage}
+               value={props.value}
             ></textarea>
             <button onClick={addMessage}>add message</button>
          </form>

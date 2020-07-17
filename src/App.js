@@ -11,6 +11,7 @@ import Music from './components/Music/Music';
 import Setting from './components/Settings/Settings';
 
 function App(props) {
+
    return (
       <BrowserRouter>
          <div className="App">
@@ -19,22 +20,17 @@ function App(props) {
             <div className="mainContent">
                <Route
                   path="/profile"
-                  
-                  render={() => <Profile
-                     state={props.state}
-                     dispatch={props.dispatch} />}
+                  render={() => <Profile store={props.store} />}
                />
 
                <Route
                   path="/message"
-                  render={() => <Message
-                     dispatch={props.dispatch}
-                     state={props.state} />}
+                  render={() => <Message store={props.store} />}
                />
 
                <Route 
                   path="/news" 
-                  render={() => <News state={props.state} />}
+                  render={() => <News store={props.store}/>}
                />
 
                <Route 
