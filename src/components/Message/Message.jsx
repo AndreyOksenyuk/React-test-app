@@ -1,30 +1,18 @@
 import React from 'react';
 import s from './Message.module.scss'
-import Dialogs from './Dialog/Dialogs';
-import DialogMessage from './Dialog/DialogMessage';
 import ContainerAddMessage from './AddMessage/ContainerAddMessage';
-import StoreContext from '../../StoreContext';
+import ListDialogsContainer from './ListDialogs/ListDialogsContainer';
+import DialogMessageContainer from './Dialog/DialogMessage/DialogMessageContainer';
 
 const Message = (props) => {
-   return <StoreContext.Consumer>
-      {store => {
-         return(
-            <div className={s.messages}>
-               <div className={s.listDialogs}>
-                  {store.getState().messagePage.dialogs.map(dialog => {
-                     return <Dialogs dialog={dialog} key={dialog.id}/>
-                  })}
-               </div>
-
-               <div className={s.dialog}>
-                  <DialogMessage state={store.getState()}/>
-                  <ContainerAddMessage />
-               </div>
-            </div>
-         )   
-      }}
-   </StoreContext.Consumer>
-
+   return(
+      <div className={s.messages}>
+      <ListDialogsContainer />
+         <div className={s.dialog}>
+            <DialogMessageContainer />
+            <ContainerAddMessage />
+         </div>
+      </div>
+   )   
 }
-
 export default Message;

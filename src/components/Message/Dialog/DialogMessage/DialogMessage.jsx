@@ -1,11 +1,11 @@
 import React from 'react';
-import s from './Dialog.module.scss'
+import s from '../Dialog.module.scss'
 
 
 const DialogMessage = (props) => {
    return (
       <div className={s.dialog_inner}>
-         {props.state.messagePage.message.map(m => {
+         {props.message.map(m => {
             return <p key={m.id}> {m.message} </p>
          })}
       </div>
