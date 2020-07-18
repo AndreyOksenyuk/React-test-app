@@ -20,17 +20,17 @@ function App(props) {
             <div className="mainContent">
                <Route
                   path="/profile"
-                  render={() => <Profile store={props.store} />}
+                  render={() => <Profile />}
                />
 
                <Route
                   path="/message"
-                  render={() => <Message store={props.store} />}
+                  render={() => <Message />}
                />
 
                <Route 
                   path="/news" 
-                  render={() => <News store={props.store}/>}
+                  render={() => <News />}
                />
 
                <Route 

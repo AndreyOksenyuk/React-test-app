@@ -4,24 +4,31 @@ import TopImg from './TopImg';
 import Posts from './Posts/Posts';
 import AddPostContainer from './Posts/AddPost/AddPostContainer';
 import User from './User/User';
+import StoreContext from '../../StoreContext';
 
 const Profile = (props) => {
-   return ( 
-   <div className={s.profile}>
+   return (
+   <StoreContext.Consumer>
+      {store => {
+         return (
+            <div className={s.profile}>
+               <TopImg />
 
-      <TopImg/>
+               <User />
 
-      <User/>
+               <div className={s.posts}>
+                  <AddPostContainer />
 
-      <div className={s.posts}>
-         <AddPostContainer store={props.store}/>
+                  {store.getState().profilePage.posts.map((post) => {
+                     return <Posts key={post.id} posts={post} />
+                  })}
 
-            {props.store.getState().profilePage.posts.map((post) => {
-               return <Posts key={post.id} posts={post} />
-            })}
-      </div>
+               </div>
+            </div>
+         )
+      }}
 
-   </div>
+   </StoreContext.Consumer>
    )
 }
 
