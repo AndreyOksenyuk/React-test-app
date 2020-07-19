@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './Message.module.scss'
+import s from './Message.module.scss';
 import ContainerAddMessage from './AddMessage/ContainerAddMessage';
 import ListDialogsContainer from './ListDialogs/ListDialogsContainer';
 import DialogMessageContainer from './Dialog/DialogMessage/DialogMessageContainer';

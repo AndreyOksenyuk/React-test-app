@@ -1,31 +1,30 @@
 import React from 'react';
-import s from './UserCard.module.scss'
+import s from './UserCard.module.scss';
+import avatar from '../../../static/Image/ava.jpg'
 
 const UserCard = (props) => {
-   let followOrUnfollow = () => {
-      
-   }
    return (
       <div>
          {props.users.map(e => {
       return (
          <div key={e.id} className={s.user}>
-            <img src={e.avatar} alt="ava" className={s.avatar}/>
+            <img 
+               src = {e.photos.small != null ? e.photos.small : avatar}
+               alt="avatar" 
+               className={s.avatar}/>
             <div className={s.user__content}>
             <h2>{e.name}</h2>
                <p>{e.status}</p>
                <div className={s.locations}>
-                  <i>{e.location.city}</i>
-                  <i>{e.location.country}</i>
+                  {/* <i>{e.location.city}</i>
+                  <i>{e.location.country}</i> */}
                </div>
             </div>
+               {e.followed
+                  ? <button onClick={() => props.follow(e.id)} className={s.btnFollow}>Подписаться</button> 
+                  : <button onClick={() => props.unfollow(e.id)} className={s.btnOnFollow}>отписаться</button>
+               }
 
-            <button 
-               className = {s.btnFollow}
-               onClick = {followOrUnfollow} 
-            >
-               {e.follow ? 'Unfollow' : 'Follow'}
-            </button>
 
          </div>
       )

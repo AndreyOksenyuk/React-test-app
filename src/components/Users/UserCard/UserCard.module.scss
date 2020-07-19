@@ -40,8 +40,19 @@
    position: absolute;
    bottom: 0;
    right: 0;
-   width: 80px;
+   width: 140px;
    height: 30px;
-   font-size: 18px;
+   color: #fff;
+   font-size: 16px;
+   font-weight: 700;
+   text-transform: lowercase;
+   background-color: rgb(196, 0, 0);
+   outline: none;
    cursor: pointer;
+}
+.btnOnFollow{
+   @extend .btnFollow;
+   background-color: rgb(216, 216, 216);
+   color: rgba(0, 0, 0, 0.575);
+   border: none;
 }
