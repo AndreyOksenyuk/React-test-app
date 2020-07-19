@@ -2,7 +2,6 @@ import React from 'react';
 import s from './AddPost.module.scss'
 
 const AddPost = (props) => {
-   console.log(props);
    let newPost = React.createRef();
 
    let onAddPosts = function (event) {

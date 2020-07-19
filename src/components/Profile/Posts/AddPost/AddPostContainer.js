@@ -12,7 +12,6 @@ let mapDispatchToProps = (dispatch) => {
    return {
       addPost: () => {
          dispatch(actionCreatorAddPost())
-         //state.profilePage.newPostText = ''
       },
       changePost: (post) => {
          dispatch(actionCreatorChangePost(post))

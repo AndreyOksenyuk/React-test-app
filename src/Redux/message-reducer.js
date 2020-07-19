@@ -14,7 +14,7 @@ let initialState = {
          },
          {
             id: 3,
-            user: 'Dinis',
+            user: 'Pedro',
             avatar: 'https://yt3.ggpht.com/a/AATXAJyqgMlsfcgmkNqMvaQAY4leVcr888ItH7dvxg=s900-c-k-c0xffffffff-no-rj-mo',
          },
          {
@@ -24,7 +24,7 @@ let initialState = {
          },
          {
             id: 5,
-            user: 'Habib',
+            user: 'Ivan',
             avatar: 'https://yt3.ggpht.com/a/AATXAJyqgMlsfcgmkNqMvaQAY4leVcr888ItH7dvxg=s900-c-k-c0xffffffff-no-rj-mo',
          },
          {
@@ -55,20 +55,26 @@ let initialState = {
 }
 
 let  MESSAGE_REDUCER = (state = initialState, action) => {
-   if (action.type === ADD_NEW_MESSAGE) {
-       let message = {
-          id: Date.parse(new Date().toString()),
-          message: state.addNewMessage
-       }
-       state.message.push(message)
-    } 
-    else if (action.type === CHANGE_NEW_MESSAGE) {
-       state.addNewMessage = action.message;
-    }
-
-   return state
+   switch (action.type) {
+      case ADD_NEW_MESSAGE:
+         let message = {
+            id: Date.parse(new Date().toString()),
+            message: state.addNewMessage
+         }
+         return{
+            ...state,
+            message: [...state.message, message],
+            addNewMessage: '',
+         }
+      case CHANGE_NEW_MESSAGE:
+         return{
+            ...state,
+            addNewMessage: action.message,
+         }
+      default:
+         return state;
+   } 
 }
-
 export let actionCreatorAddMessage = () => ({
    type: ADD_NEW_MESSAGE,
 })

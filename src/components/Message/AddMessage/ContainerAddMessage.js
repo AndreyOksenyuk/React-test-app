@@ -11,7 +11,6 @@ let mapDispatchToProps = (dispatch) => {
    return {
       addMessage: () => {
          dispatch(actionCreatorAddMessage())
-         //store.getState().messagePage.addNewMessage = ''
       },
       onchangeMessage: (message) => {
          dispatch(actionCreatorChangeMessage(message))
