@@ -1,0 +1,47 @@
+.user {
+   position: relative;
+   display: flex;
+   align-items: center;
+   padding: 5px 20px;
+   width: 500px;
+   height: 100px;
+   background-color: rgba(219, 219, 219, 0.479);
+   margin: 10px auto;
+   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.541);
+
+   .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-right: 20px;
+   }
+
+   &__content {
+      p {
+         margin-left: 30px;
+         color: rgb(133, 0, 0);
+      }
+   }
+
+}
+
+.locations {
+   display: flex;
+   width: 100%;
+   justify-content: flex-end;
+
+   i {
+      margin-right: 5px;
+      font-size: 15px;
+   }
+}
+
+.btnFollow{
+   position: absolute;
+   bottom: 0;
+   right: 0;
+   width: 80px;
+   height: 30px;
+   font-size: 18px;
+   cursor: pointer;
+}

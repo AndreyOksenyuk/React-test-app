@@ -9,6 +9,7 @@ import Message from './components/Message/Message';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Setting from './components/Settings/Settings';
+import UsersContainer from './components/Users/UsersContainer';
 
 function App(props) {
 
@@ -36,6 +37,10 @@ function App(props) {
                <Route 
                   path="/music" 
                   component={Music} 
+               />
+               <Route 
+                  path="/users" 
+                  component={UsersContainer} 
                />
 
                <Route 

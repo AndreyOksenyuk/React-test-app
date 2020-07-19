@@ -47,20 +47,6 @@ let  PROFILE_REDUCER = (state = initialState, action) => {
       default:
          return state;
    }
-      
-   // if (action.type === ADD_POST) {
-   //    let newPost = {
-   //       id: Date.parse(new Date().toString()),
-   //       user: 'User name',
-   //       message: stateCopy.newPostText,
-   //    }
-   //    stateCopy.posts.push(newPost)
-   //    stateCopy.newPostText = ''
-   // } else if (action.type === NEW_POST) {
-   //    stateCopy.newPostText = action.text;
-   // }
-
-   //return stateCopy
 }
 
 export let actionCreatorAddPost = () => ({
