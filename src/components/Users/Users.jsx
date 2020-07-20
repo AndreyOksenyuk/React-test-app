@@ -1,29 +1,30 @@
 import React from 'react';
 import UserCard from './UserCard/UserCard';
 import style from './Users.module.scss';
-import * as axios from 'axios';
+import axios from 'axios';
 
-export const Users = (props) => { 
-   
-   if (props.users.length === 0) {
+class Users extends React.Component {
 
-      axios.get('https://social-network.samuraijs.com/api/1.0/users')
-         .then(response => props.setUsers(response.data.items))
+   constructor(props) {
+      super(props);
+         axios.get('https://social-network.samuraijs.com/api/1.0/users')
+            .then(response => this.props.setUsers(response.data.items))
    }
- 
 
+   render() {
+      return (
+         <div className={style.UsersPage}>
+            <h1>{this.props.text}</h1>
+            <UserCard
+               users={this.props.users}
+               follow={this.props.follow}
+               unfollow={this.props.unfollow}
+            />
+            <button className={style.btnShoeMore}>Show more</button>
+         </div>
+      )
+   }
 
-   return ( 
-      <div className={style.UsersPage}>
-         <h1>{props.text}</h1>
-         <UserCard 
-            users={props.users}
-            follow={props.follow}
-            unfollow={props.unfollow}
-         />
-         <button onClick={props.onClickUser} className={style.btnShoeMore}>Show more</button>
-      </div>
-   )
 }
 
 export default Users;

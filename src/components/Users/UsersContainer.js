@@ -1,7 +1,6 @@
 import { connect } from 'react-redux'
 import Users from './Users'
-import { actionsCreatorAddUserText, actionsCreatorFollow, actionsCreatorUnfollow, actionsCreatorSetUsers } from '../../Redux/users-reducer'
-
+import { actionsCreatorFollow, actionsCreatorUnfollow, actionsCreatorSetUsers } from '../../Redux/users-reducer'
 
 const mapStateToProps = (state) => { 
    return {
@@ -12,9 +11,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) =>{
    return {
-      onClickUser: () => {
-         dispatch(actionsCreatorAddUserText())
-      },
       follow: (id) => {
          dispatch(actionsCreatorFollow(id))
       },

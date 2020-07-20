@@ -4,23 +4,10 @@ const SET_USERS = 'SET-USERS';
 
 let initialState = {
    users: [],
-   text: 'Show more',
 }
 
 let USERS_REDUCER = (state = initialState, action) => {
    switch (action.type) {
-      case 'ADD-USER-TEXT':
-         let text = "Users"
-         if(state.text === text){
-            return {
-               ...state,
-               text: 'Show more'
-            }
-         }
-         return {
-            ...state,
-            text: text,
-         };
       case FOLLOW: 
          return {
             ...state,
@@ -51,11 +38,6 @@ let USERS_REDUCER = (state = initialState, action) => {
    }
 }
 
-export let actionsCreatorAddUserText = () => {
-   return {
-      type: 'ADD-USER-TEXT'
-   }
-}
 export let actionsCreatorFollow = (id) => {
    return {
       type: 'FOLLOW',
