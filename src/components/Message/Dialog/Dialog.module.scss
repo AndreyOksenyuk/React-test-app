@@ -1,39 +1,24 @@
+
+.dialog{
+   text-decoration: none;
+   color: rgb(172, 172, 172);
+}
+.active {
+   .listItem {
+      background-color: rgb(245, 245, 245);
+
+      p {
+         color: rgb(0, 0, 0);
+      }
+   }
+}
 .dialog_inner {
    width: 100%;
    height: 80%;
    background-color: #fff;
    padding: 20px;
+   border: 1px #ccc solid;
 }
-
-.messages {
-   display: grid;
-   grid-template-columns: 200px 1fr;
-   grid-template-rows: 1fr;
-   width: 100%;
-   height: 100%;
-}
-.listDialogs {
-   display: flex;
-   flex-direction: column;
-   background-color: #ccc;
-
-   a {
-      color: #000;
-      text-decoration: none;
-
-   }
-}
-
-.active {
-   .listItem {
-      background-color: rgb(233, 233, 233);
-
-      p {
-         color: rgb(214, 203, 41);
-      }
-   }
-}
-
 .listItem {
    display: flex;
    align-items: center;

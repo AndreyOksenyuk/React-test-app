@@ -8,7 +8,7 @@ let initialState = {
    users: [],
    numberOfPages: 1,
    numberOfUsers: 6,
-   totalUsersCount: 30,
+   totalUsersCount: 0,
 }
 
 let USERS_REDUCER = (state = initialState, action) => {
@@ -18,7 +18,7 @@ let USERS_REDUCER = (state = initialState, action) => {
             ...state,
             users: state.users.map(e => {
                if (e.id === action.id ) {
-                  return {...e, followed: false}
+                  return {...e, followed: true}
                }
                return e
             })
@@ -28,7 +28,7 @@ let USERS_REDUCER = (state = initialState, action) => {
             ...state,
             users: state.users.map(e => {
                if (e.id === action.id ) {
-                  return {...e, followed: true}
+                  return {...e, followed: false}
                }
                return e
             })

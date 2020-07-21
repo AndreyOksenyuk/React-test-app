@@ -1,22 +1,75 @@
-.Posts span{
-   color: #fff;
-   font-weight: 800;
-   margin-left: 30px;
+.Posts {
+   margin-bottom: 50px;
+   span {
+      color: #fff;
+      font-weight: 800;
+      margin-left: 30px;
+   }
+
+   p {
+      width: 400px;
+      padding: 20px;
+      background-color: #fff;
+      overflow: hidden;
+      margin-left: 40px;
+   }
 }
+
+
 .post{
    display: flex;
    align-items: center;
    width: 400px;
    height: auto;
-   background-color: rgb(199, 255, 252);
+   background-color: rgb(240, 240, 240);
    margin: 10px;
-   padding-bottom: 10px;
+   font-size: 18px;
+   font-weight: 700;
+   img{
+      top: 10px;
+      left: 10px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin: 10px;
+   }
+
 }
-.img{
-   width: 40px;
-   height: 40px;
-   border-radius: 50%;
-   margin: 10px 10px auto 5px;
+
+.likeAndDisLike{
+   display: flex;
+   justify-content: space-between;
+   width: 120px;
+   margin: 10px 20px;
+   div{
+      width: 20%;
+      margin-right: 20px;
+      padding-right: 5px;
+      cursor: pointer;
+      span{
+         font-family: Cambria;
+         font-weight: 300;
+         color: rgb(0, 0, 0);
+         margin: 10px;
+           -ms-user-select: none;
+           -moz-user-select: none;
+           -khtml-user-select: none;
+           -webkit-user-select: none;
+      }
+   }
+}
+
+.likeActive{
+   color: rgb(41, 73, 255);
+   &:hover{
+      color: rgb(34, 62, 224);
+   }
+}
+.noActiv{
+   color: rgb(105, 105, 105);
+      &:hover {
+         color: rgb(77, 77, 77);
+      }
 }
 
 

@@ -21,8 +21,8 @@ const UserCard = (props) => {
                </div>
             </div>
                {e.followed
-                  ? <button onClick={() => props.follow(e.id)} className={s.btnFollow}>Подписаться</button> 
-                  : <button onClick={() => props.unfollow(e.id)} className={s.btnOnFollow}>отписаться</button>
+                  ? <button onClick={() => props.unfollow(e.id)} className={s.btnOnFollow}>отписаться</button>
+                  : <button onClick={() => props.follow(e.id)} className={s.btnFollow}>Подписаться</button> 
                }
 
 
