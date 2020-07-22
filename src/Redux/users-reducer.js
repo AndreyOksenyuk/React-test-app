@@ -48,7 +48,7 @@ let USERS_REDUCER = (state = initialState, action) => {
          return {
             ...state,
             totalUsersCount: action.totalCount
-         }               
+         }                            
       default:
          return state;
    }
