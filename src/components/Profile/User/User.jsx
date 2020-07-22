@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './User.module.css'
-import img from '../../../static/Image/ava.jpg'
+import img from '../../../assets/Image/ava.jpg'
 
 const User = () => {
    return (

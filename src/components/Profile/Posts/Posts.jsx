@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Post.module.scss'
-import img from '../../../static/Image/ava.jpg'
+import img from '../../../assets/Image/ava.jpg'
 import 'font-awesome/css/font-awesome.min.css';
 
 const Posts = (props) => { 

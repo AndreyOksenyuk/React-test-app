@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './UserCard.module.scss';
-import avatar from '../../../static/Image/ava.jpg'
+import avatar from '../../../assets/Image/ava.jpg'
 
 const UserCard = (props) => {
    return (

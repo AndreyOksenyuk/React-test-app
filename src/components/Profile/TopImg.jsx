@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Profile.module.scss'
-import img from '../../static/Image/portfolio-01.jpg'
+import img from '../../assets/Image/portfolio-01.jpg'
 
 const TopImg = () => {
    return (
