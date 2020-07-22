@@ -3,13 +3,13 @@ import './App.css';
 import { Route, BrowserRouter } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Nav from './components/Nav/Nav'
-import Profile from './components/Profile/Profile';
 import Footer from './components/Footer/Footer';
 import Message from './components/Message/Message';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Setting from './components/Settings/Settings';
 import UsersContainer from './components/Users/UsersContainer';
+import ProfileContainer from './components/Profile/Profile.container';
 
 function App(props) {
    return (
@@ -19,8 +19,8 @@ function App(props) {
             <Nav />
             <div className="mainContent">
                <Route
-                  path="/profile"
-                  render={() => <Profile />}
+                  path="/profile/:userId?"
+                  render={() => <ProfileContainer />}
                />
 
                <Route

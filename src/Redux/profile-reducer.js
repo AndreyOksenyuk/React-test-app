@@ -1,7 +1,11 @@
 const ADD_POST = 'ADD-POST';
 const NEW_POST = 'NEW-POST';
+const LIKE = 'LIKE';
+const DIS_LIKE = 'DIS-LIKE';
+const USER_PROFILE = 'USER_PROFILE'
 
 let initialState = {
+   User: {},
    newPostText: '',
    text: 0,
       posts: [{
@@ -78,7 +82,7 @@ let  PROFILE_REDUCER = (state = initialState, action) => {
          }
          return {
             ...state,
-            posts: [...state.posts, newPost],
+            posts: [newPost, ...state.posts ],
             newPostText: '',
          }
       case NEW_POST: 
@@ -86,7 +90,7 @@ let  PROFILE_REDUCER = (state = initialState, action) => {
             ...state,
             newPostText: action.text,
          }
-      case 'LIKE': 
+      case LIKE: 
          if (!state.posts[action.index].like.status) {
               return {
                  ...state,
@@ -116,7 +120,7 @@ let  PROFILE_REDUCER = (state = initialState, action) => {
                },
                text: state.posts[action.index].like.count,
             }
-      case 'DIS-LIKE': 
+      case DIS_LIKE: 
          if (!state.posts[action.index].disLike.status) {
               return {
                  ...state,
@@ -146,7 +150,12 @@ let  PROFILE_REDUCER = (state = initialState, action) => {
                   
                },
                text: state.posts[action.index].disLike.count,
-            } 
+            }
+      case USER_PROFILE:
+         return {
+            ...state,
+            User: {...action.user}
+         }
       default:
          return state;
    }
@@ -166,6 +175,10 @@ export let actionCreatorLike = (index) => ({
 export let actionCreatorDisLike = (index) => ({
    type: 'DIS-LIKE',
    index: index,
+})
+export let setUserProfile = (user) => ({
+   type: 'USER_PROFILE',
+   user: user,
 })
 
 export default PROFILE_REDUCER;

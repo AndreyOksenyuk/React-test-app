@@ -1,16 +1,19 @@
 import React from 'react';
 import s from './Profile.module.scss'
-import TopImg from './TopImg';
 import AddPostContainer from './Posts/AddPost/AddPostContainer';
 import User from './User/User';
 import MapPostContainer from './Posts/MapPosts/MapPostContainer';
+import img from '../../assets/Image/portfolio-01.jpg'
 
 const Profile = (props) => {
    return (
+      
       <div className={s.profile}>
-         <TopImg />
+         <div>
+            <img src={img} alt="img" className={s.topImg}/>
+         </div>  
 
-         <User />
+         <User {...props.User}/>
 
          <div className={s.posts}>
             <AddPostContainer />
