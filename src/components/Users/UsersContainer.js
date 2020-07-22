@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import Users from './Users'
-import { actionsCreatorFollow, actionsCreatorUnfollow, actionsCreatorSetUsers, actionsCreatorSetPage, actionsCreatorSetTotalCount, actionsCreatorisFetching } from '../../Redux/users-reducer'
+import { follow, unfollow, setUsers, setPage, setTotalCount, isFetching } from '../../Redux/users-reducer'
 import axios from 'axios';
-import Preloader from '../preloader';
 
 class UsersContainer extends React.Component {
    componentDidMount() {
@@ -27,21 +26,19 @@ class UsersContainer extends React.Component {
    }  
 
    render() {  
-         return <>
-                {this.props.fetching 
-                  ? <Preloader />
-                  :  <Users 
-                           users={this.props.users}
-                           follow={this.props.follow}
-                           unfollow={this.props.unfollow}
-                           numberOfPages={this.props.numberOfPages}
-                           numberOfUsers={this.props.numberOfUsers}
-                           totalUsersCount={this.props.totalUsersCount}
-                           onSetPage={this.onSetPage}
-                        />
-                }
-               </>
-      }
+         return <Users 
+                  users={this.props.users}
+                  follow={this.props.follow}
+                  unfollow={this.props.unfollow}
+                  numberOfPages={this.props.numberOfPages}
+                  numberOfUsers={this.props.numberOfUsers}
+                  totalUsersCount={this.props.totalUsersCount}
+                  onSetPage={this.onSetPage}
+                  fetching={this.props.fetching}
+               />
+            }
+
+      
 }
 
 const mapStateToProps = (state) => { 
@@ -55,27 +52,6 @@ const mapStateToProps = (state) => {
    }
 }
 
-const mapDispatchToProps = (dispatch) =>{
-   return {
-      follow: (id) => {
-         dispatch(actionsCreatorFollow(id))
-      },
-      unfollow: (id) => {
-         dispatch(actionsCreatorUnfollow(id))
-      },
-      setUsers: (users) => {
-         dispatch(actionsCreatorSetUsers(users))
-      },
-      setPage: (page) => {
-         dispatch(actionsCreatorSetPage(page))
-      },
-      setTotalCount: (number) => {
-        dispatch(actionsCreatorSetTotalCount(number)) 
-      },
-      isFetching: (isFetching) => {
-         dispatch(actionsCreatorisFetching(isFetching))
-      }
-   }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(mapStateToProps, {
+   follow, unfollow, setUsers, setPage, setTotalCount, isFetching
+})(UsersContainer);

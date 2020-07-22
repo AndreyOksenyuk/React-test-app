@@ -61,37 +61,37 @@ let USERS_REDUCER = (state = initialState, action) => {
    }
 }
 
-export let actionsCreatorFollow = (id) => {
+export let follow = (id) => {
    return {
       type: 'FOLLOW',
       id: id,
    }
 }
-export let actionsCreatorUnfollow = (id) => {
+export let unfollow = (id) => {
    return {
       type: 'UNFOLLOW',
       id: id,
    }
 }
-export let actionsCreatorSetUsers = (users) => {
+export let setUsers = (users) => {
    return {
       type: 'SET-USERS',
       users: users,
    }
 }
-export let actionsCreatorSetPage = (page) => {
+export let setPage = (page) => {
    return {
       type: 'SET-PAGE',
       page: page,
    }
 }
-export let actionsCreatorSetTotalCount = (number) => {
+export let setTotalCount = (number) => {
    return {
       type: 'SET-TOTAL-COUNT',
       totalCount: number,
    }
 }
-export let actionsCreatorisFetching = (isFetching) => {
+export let isFetching = (isFetching) => {
    return {
       type: 'IS_FETCHING',
       isFetching,

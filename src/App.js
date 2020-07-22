@@ -12,7 +12,6 @@ import Setting from './components/Settings/Settings';
 import UsersContainer from './components/Users/UsersContainer';
 
 function App(props) {
-
    return (
       <BrowserRouter>
          <div className="App">

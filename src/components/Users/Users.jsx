@@ -1,6 +1,7 @@
 import React from 'react';
 import UserCard from './UserCard/UserCard';
 import style from './Users.module.scss';
+import Preloader from '../preloader';
 
 
 let Users = (props) => {
@@ -10,13 +11,17 @@ let Users = (props) => {
       pages.push(i)
    }
       return (
+
          <div className={style.UsersPage}>
-            <UserCard
-               users={props.users}
-               follow={props.follow}
-               unfollow={props.unfollow}
-            />
-            <button className={style.btnShoeMore}>Show more</button>
+            {props.fetching
+               ? <Preloader />
+               : <UserCard
+                     users={props.users}
+                     follow={props.follow}
+                     unfollow={props.unfollow}
+                  />
+            }
+            
             <div className={style.pagination}>
                {pages.map(e => {
                   return <span
