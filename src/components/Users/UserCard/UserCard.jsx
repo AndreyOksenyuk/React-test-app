@@ -2,6 +2,7 @@ import React from 'react';
 import s from './UserCard.module.scss';
 import avatar from '../../../assets/Image/ava.jpg'
 import { NavLink } from 'react-router-dom';
+import FolowAndUnfolow from './FolowAndUnfolow';
 
 const UserCard = (props) => {
    return (
@@ -20,15 +21,15 @@ const UserCard = (props) => {
             <div className={s.user__content}>
             <h2>{e.name}</h2>
                <p>{e.status}</p>
-               <div className={s.locations}>
-                  {/* <i>{e.location.city}</i>
-                  <i>{e.location.country}</i> */}
-               </div>
             </div>
-               {e.followed
-                  ? <button onClick={() => props.unfollow(e.id)} className={s.btnOnFollow}>отписаться</button>
-                  : <button onClick={() => props.follow(e.id)} className={s.btnFollow}>Подписаться</button> 
-               }
+
+            <FolowAndUnfolow 
+               follow={props.follow}
+               unfollow={props.unfollow}
+               id={e.id}
+               userFollowed={e.followed}
+            />
+
 
 
          </div>

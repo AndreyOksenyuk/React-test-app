@@ -3,9 +3,11 @@ const NEW_POST = 'NEW-POST';
 const LIKE = 'LIKE';
 const DIS_LIKE = 'DIS-LIKE';
 const USER_PROFILE = 'USER_PROFILE'
+const SET_FOLLOWED_USER = 'SET-FOLLOWED-USER'
 
 let initialState = {
    User: {},
+   followedUser: null,
    newPostText: '',
    text: 0,
       posts: [{
@@ -156,6 +158,11 @@ let  PROFILE_REDUCER = (state = initialState, action) => {
             ...state,
             User: {...action.user}
          }
+      case SET_FOLLOWED_USER:
+         return {
+            ...state,
+            followedUser: action.follow
+         }
       default:
          return state;
    }
@@ -180,5 +187,8 @@ export let setUserProfile = (user) => ({
    type: 'USER_PROFILE',
    user: user,
 })
-
+export let setFollowedUser = (follow) => ({
+   type: 'SET-FOLLOWED-USER',
+   follow,
+})
 export default PROFILE_REDUCER;

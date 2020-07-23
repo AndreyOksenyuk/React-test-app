@@ -8,7 +8,9 @@ class UsersContainer extends React.Component {
    componentDidMount() {
       this.props.isFetching(true)
       axios
-         .get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.numberOfPages}&count=${this.props.numberOfUsers}`)
+         .get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.numberOfPages}&count=${this.props.numberOfUsers}`,{
+            withCredentials: true
+         })
          .then(response => {
             this.props.setUsers(response.data.items)
             this.props.setTotalCount(response.data.totalCount)
@@ -18,7 +20,9 @@ class UsersContainer extends React.Component {
    onSetPage = (page) => { 
       this.props.isFetching(true)
       this.props.setPage(page)
-      axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.numberOfUsers}`)
+      axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.numberOfUsers}`, {
+         withCredentials: true
+      })
          .then(response => { 
             this.props.setUsers(response.data.items)
             this.props.isFetching(false)

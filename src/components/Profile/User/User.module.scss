@@ -1,0 +1,28 @@
+.user {
+   width: 100%;
+   height: 300px;
+   background-color: rgb(247, 247, 247);
+   padding: 10px;
+   &__inner{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      h2{
+         margin: 0;
+         width: 200px;
+      }
+   }
+}
+.avatar {
+   width: 150px;
+   height: 150px;
+   border-radius: 5px;
+}
+
+.followedBtn{
+   position: relative;
+   width: 140px;
+   height: 30px;
+   margin: 10px;
+}
