@@ -1,12 +1,17 @@
 import React from 'react';
-import s from './Header.module.css'
+import s from './Header.module.scss'
+import { NavLink } from 'react-router-dom';
 
-const Header = () => {
-   return(
-     <header className={s.header}>
+const Header = (props) => {
+	return (
+		<header className={s.header}>
+			{!props.login
+				? <NavLink to='/login' className={s.loginLink}>Login</NavLink>
+				: <p className={s.login}>{props.login}</p>
+     		}
 
-     </header> 
-   ) 
+		</header>
+	)
 }
 
 export default Header;

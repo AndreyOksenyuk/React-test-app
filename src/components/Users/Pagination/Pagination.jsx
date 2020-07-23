@@ -22,7 +22,6 @@ const Pagination = (props) => {
                onClick={() => { setPortitionNamber(PortitionNumber - 1) }}
             >&larr;</button>
          }
-         <div className={style.paginationPage__wraper}>
             {
                pages
                   .filter(p => p >= leftPortition && p <= rigthPortition)
@@ -34,7 +33,6 @@ const Pagination = (props) => {
                      >{e}</span>
                   })
             }
-         </div>
 
          {portitionCount > PortitionNumber &&
             <button 
