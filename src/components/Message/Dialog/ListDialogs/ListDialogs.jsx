@@ -1,5 +1,5 @@
 import React from 'react';
-import Dialogs from '../Dialog/Dialogs'
+import Dialogs from './dialogs/Dialogs'
 
 const ListDialogs = (props) => {
    return (

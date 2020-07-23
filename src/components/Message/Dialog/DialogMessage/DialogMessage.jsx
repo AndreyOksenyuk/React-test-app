@@ -1,6 +1,5 @@
 import React from 'react';
-import s from '../Dialog.module.scss'
-
+import s from './DialogMessage.module.scss'
 
 const DialogMessage = (props) => {
    return (
