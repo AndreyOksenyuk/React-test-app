@@ -11,6 +11,7 @@ let initialState = {
    numberOfUsers: 6,
    totalUsersCount: 0,
    isFetching: false,
+   portitionSize: 10,
 }
 
 let USERS_REDUCER = (state = initialState, action) => {

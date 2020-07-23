@@ -35,6 +35,7 @@ class UsersContainer extends React.Component {
                   totalUsersCount={this.props.totalUsersCount}
                   onSetPage={this.onSetPage}
                   fetching={this.props.fetching}
+                  portitionSize={this.props.portitionSize}
                />
             }
 
@@ -48,7 +49,8 @@ const mapStateToProps = (state) => {
       numberOfPages: state.usersPage.numberOfPages,
       numberOfUsers: state.usersPage.numberOfUsers,
       totalUsersCount: state.usersPage.totalUsersCount,
-      fetching: state.usersPage.isFetching
+      fetching: state.usersPage.isFetching,
+      portitionSize: state.usersPage.portitionSize
    }
 }
 
