@@ -1,10 +1,10 @@
 import React from 'react';
 import Profile from './Profile';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import { setUserProfile, setFollowedUser,} from '../../Redux/profile-reducer'
 import {follow, unfollow,} from '../../Redux/users-reducer'
 import { withRouter } from 'react-router-dom';
+import {getUserProfile, getFollow} from '../../api'
 
 class ProfileContainer extends React.Component {
 
@@ -13,14 +13,8 @@ class ProfileContainer extends React.Component {
       if (!userId) {
          userId = 9482;
       }
-      axios
-         .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
-         .then(response => this.props.setUserProfile(response.data));
-      axios
-         .get(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`,{
-            withCredentials: true,
-         })
-         .then(response => this.props.setFollowedUser(response.data))
+      getUserProfile(userId).then(data => this.props.setUserProfile(data));
+      getFollow(userId).then(data => this.props.setFollowedUser(data))
    }
 
    render() {
