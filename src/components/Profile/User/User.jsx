@@ -16,12 +16,14 @@ const User = (props) => {
                      ? <img src={img} alt="avatar" className={s.avatar} />
                      : <img src={{ ...props.photos }.small} alt="avatar" className={s.avatar} />
                }
-               <div className={s.followedBtn}>
+               <div className = {s.followedBtn} onClick = {() => props.FollowToggle()} >
                   <FolowAndUnfolow 
                      follow={props.follow}
                      unfollow={props.unfollow}
                      id={props.userId}
                      userFollowed={props.followedUser}
+                     disableSubscribeBtn={props.disableSubscribeBtn}
+                     disableBtn={props.disableBtn}
                   />
                </div>
                <h2>{props.fullName}</h2>

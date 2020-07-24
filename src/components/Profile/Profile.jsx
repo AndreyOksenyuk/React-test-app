@@ -6,7 +6,6 @@ import MapPostContainer from './Posts/MapPosts/MapPostContainer';
 import img from '../../assets/Image/portfolio-01.jpg'
 
 const Profile = (props) => {
-
    return (
       
       <div className={s.profile}>
@@ -19,6 +18,9 @@ const Profile = (props) => {
             unfollow={props.unfollow}
             followedUser={props.followedUser}
             text={props.text}
+            disableSubscribeBtn={props.disableSubscribeBtn}
+            disableBtn={props.disableBtn}
+            FollowToggle={props.FollowToggle}
          />
 
          <div className={s.posts}>

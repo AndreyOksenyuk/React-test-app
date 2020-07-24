@@ -1,13 +1,12 @@
 import React from 'react';
 import Profile from './Profile';
 import { connect } from 'react-redux';
-import { setUserProfile, setFollowedUser,} from '../../Redux/profile-reducer'
-import {follow, unfollow,} from '../../Redux/users-reducer'
+import { setUserProfile, setFollowedUser, FollowToggle} from '../../Redux/profile-reducer'
+import {follow, unfollow, disableBtn} from '../../Redux/users-reducer'
 import { withRouter } from 'react-router-dom';
 import {getUserProfile, getFollow} from '../../api'
 
 class ProfileContainer extends React.Component {
-
    componentDidMount(){
       let userId = this.props.match.params.userId;
       if (!userId) {
@@ -25,11 +24,12 @@ class ProfileContainer extends React.Component {
 const mapStateToProps = (state) => ({
    User: state.profilePage.User,
    followedUser: state.profilePage.followedUser,
+   disableSubscribeBtn: state.usersPage.disableSubscribeBtn
 })
 
 const UrlDataContainerComponent = withRouter(ProfileContainer)
 
 export default connect(mapStateToProps, {
-   setUserProfile, setFollowedUser, 
-   follow, unfollow, 
+   setUserProfile, setFollowedUser, FollowToggle,
+   follow, unfollow, disableBtn
 })(UrlDataContainerComponent)

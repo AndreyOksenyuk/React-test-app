@@ -163,6 +163,11 @@ let  PROFILE_REDUCER = (state = initialState, action) => {
             ...state,
             followedUser: action.follow
          }
+      case 'FOLLOWED_TOGLE':
+         return {
+            ...state,
+            followedUser: state.followedUser = !state.followedUser
+         }
       default:
          return state;
    }
@@ -190,5 +195,8 @@ export let setUserProfile = (user) => ({
 export let setFollowedUser = (follow) => ({
    type: 'SET-FOLLOWED-USER',
    follow,
+})
+export let FollowToggle = () => ({
+   type: 'FOLLOWED_TOGLE',
 })
 export default PROFILE_REDUCER;

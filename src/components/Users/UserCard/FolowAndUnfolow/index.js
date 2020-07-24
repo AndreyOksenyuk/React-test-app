@@ -20,7 +20,7 @@ const FolowAndUnfolow = (props) => {
                      })
                   
                }}
-            >{disable ? <i class="fa fa-spinner" aria-hidden="true"></i> : 'отписаться'}</button>
+            >{disable ? <i className="fa fa-spinner" aria-hidden="true"></i> : 'отписаться'}</button>
 
             : <button
               disabled = {disable}
@@ -36,7 +36,7 @@ const FolowAndUnfolow = (props) => {
                      })
                      
                }}
-            >{disable ? <i class="fa fa-spinner" aria-hidden="true"></i> : 'Подписаться'}</button>
+            >{disable ? <i className="fa fa-spinner" aria-hidden="true"></i> : 'Подписаться'}</button>
          }
       </>
    )
