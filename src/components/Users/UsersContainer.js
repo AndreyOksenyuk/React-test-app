@@ -1,7 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Users from './Users';
-import { follow, unfollow, setUsers, setPage, setTotalCount, isFetching } from '../../Redux/users-reducer';
+import {
+   follow,
+   unfollow,
+   setUsers,
+   setPage,
+   setTotalCount,
+   isFetching,
+   disableBtn,
+} from '../../Redux/users-reducer';
 import {getUsers} from '../../api';
 
 class UsersContainer extends React.Component {
@@ -34,6 +42,8 @@ class UsersContainer extends React.Component {
                   onSetPage={this.onSetPage}
                   fetching={this.props.fetching}
                   portitionSize={this.props.portitionSize}
+                  disableSubscribeBtn={this.props.disableSubscribeBtn}
+                  disableBtn={this.props.disableBtn}
                />
             }
 
@@ -48,10 +58,12 @@ const mapStateToProps = (state) => {
       numberOfUsers: state.usersPage.numberOfUsers,
       totalUsersCount: state.usersPage.totalUsersCount,
       fetching: state.usersPage.isFetching,
-      portitionSize: state.usersPage.portitionSize
+      portitionSize: state.usersPage.portitionSize,
+      disableSubscribeBtn: state.usersPage.disableSubscribeBtn
+
    }
 }
 
 export default connect(mapStateToProps, {
-   follow, unfollow, setUsers, setPage, setTotalCount, isFetching
+   follow, unfollow, setUsers, setPage, setTotalCount, isFetching, disableBtn
 })(UsersContainer);

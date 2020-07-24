@@ -4,6 +4,7 @@ const SET_USERS = 'SET-USERS';
 const SET_PAGE = 'SET-PAGE';
 const SET_TOTAL_COUNT = 'SET-TOTAL-COUNT'
 const IS_FETCHING = 'IS_FETCHING'
+const DISABLE_SUBSCRIBE_BTN = 'DISABLE_SUBSCRIBE_BTN'
 
 let initialState = {
    users: [],
@@ -12,6 +13,7 @@ let initialState = {
    totalUsersCount: 0,
    isFetching: false,
    portitionSize: 10,
+   disableSubscribeBtn: []
 }
 
 let USERS_REDUCER = (state = initialState, action) => {
@@ -57,6 +59,14 @@ let USERS_REDUCER = (state = initialState, action) => {
             ...state,
             isFetching: action.isFetching,
          }                            
+      case DISABLE_SUBSCRIBE_BTN:
+         return {
+            ...state,
+            disableSubscribeBtn: action.isFeatching 
+               ?  [...state.disableSubscribeBtn, action.userId] 
+               :  state.disableSubscribeBtn.filter(id => id !== action.userId) 
+               
+         }                            
       default:
          return state;
    }
@@ -96,6 +106,13 @@ export let isFetching = (isFetching) => {
    return {
       type: 'IS_FETCHING',
       isFetching,
+   }
+}
+export let disableBtn = (userId, isFeatching) => {
+   return {
+      type: 'DISABLE_SUBSCRIBE_BTN',
+      userId, isFeatching
+
    }
 }
 

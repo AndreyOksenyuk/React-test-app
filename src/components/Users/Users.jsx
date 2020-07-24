@@ -14,6 +14,8 @@ let Users = (props) => {
                      users={props.users}
                      follow={props.follow}
                      unfollow={props.unfollow}
+                     disableSubscribeBtn={props.disableSubscribeBtn}
+                     disableBtn={props.disableBtn}
                   />
             }
             

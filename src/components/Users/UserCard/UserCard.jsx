@@ -28,6 +28,8 @@ const UserCard = (props) => {
                unfollow={props.unfollow}
                id={e.id}
                userFollowed={e.followed}
+               disableSubscribeBtn={props.disableSubscribeBtn}
+               disableBtn={props.disableBtn}
             />
 
 
