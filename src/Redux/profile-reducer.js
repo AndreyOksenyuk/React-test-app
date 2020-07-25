@@ -1,3 +1,5 @@
+import {followedAPI, getUserProfile} from '../api'
+
 const ADD_POST = 'ADD-POST';
 const NEW_POST = 'NEW-POST';
 const LIKE = 'LIKE';
@@ -69,7 +71,7 @@ let  PROFILE_REDUCER = (state = initialState, action) => {
    switch(action.type){
       case ADD_POST: 
          let newPost = {
-            id: Date.parse(new Date().toString()),
+            id: Date.now(),
             user: 'User name',
             message: state.newPostText,
             like: {
@@ -199,4 +201,16 @@ export let setFollowedUser = (follow) => ({
 export let FollowToggle = () => ({
    type: 'FOLLOWED_TOGLE',
 })
+
+export const getUserProfileThankCreator= (userId) => {
+   return (dispatch) => {
+      getUserProfile(userId).then(data => dispatch(setUserProfile(data)));     
+   }
+}
+export const getFollowThankCreator= (userId) => {
+   return (dispatch) => {
+      followedAPI.getFollow(userId).then(data => dispatch(setFollowedUser(data)));
+   }
+}
+
 export default PROFILE_REDUCER;

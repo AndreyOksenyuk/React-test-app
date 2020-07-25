@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import style from './Pagination.module.scss'
 
 const Pagination = (props) => {
-
    let pagination = Math.ceil(props.totalUsersCount / props.numberOfUsers);
    let pages = []
    for (let i = 1; i <= pagination; i++) {

@@ -1,10 +1,12 @@
 import React from 'react';
 import Profile from './Profile';
 import { connect } from 'react-redux';
-import { setUserProfile, setFollowedUser, FollowToggle} from '../../Redux/profile-reducer'
-import {follow, unfollow, disableBtn} from '../../Redux/users-reducer'
 import { withRouter } from 'react-router-dom';
-import {getUserProfile, getFollow} from '../../api'
+import {
+   FollowToggle,
+   getUserProfileThankCreator,
+   getFollowThankCreator,
+} from '../../Redux/profile-reducer'
 
 class ProfileContainer extends React.Component {
    componentDidMount(){
@@ -12,8 +14,8 @@ class ProfileContainer extends React.Component {
       if (!userId) {
          userId = 9482;
       }
-      getUserProfile(userId).then(data => this.props.setUserProfile(data));
-      getFollow(userId).then(data => this.props.setFollowedUser(data))
+      this.props.getUserProfile(userId)
+      this.props.getFollow(userId)
    }
 
    render() {
@@ -24,12 +26,12 @@ class ProfileContainer extends React.Component {
 const mapStateToProps = (state) => ({
    User: state.profilePage.User,
    followedUser: state.profilePage.followedUser,
-   disableSubscribeBtn: state.usersPage.disableSubscribeBtn
 })
 
 const UrlDataContainerComponent = withRouter(ProfileContainer)
 
 export default connect(mapStateToProps, {
-   setUserProfile, setFollowedUser, FollowToggle,
-   follow, unfollow, disableBtn
+   getUserProfile: getUserProfileThankCreator,
+   getFollow: getFollowThankCreator,
+   FollowToggle,
 })(UrlDataContainerComponent)

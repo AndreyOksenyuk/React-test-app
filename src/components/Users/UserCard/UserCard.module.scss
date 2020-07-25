@@ -36,33 +36,3 @@
    }
 }
 
-.btnFollow{
-   position: absolute;
-   bottom: 0;
-   right: 0;
-   width: 140px;
-   height: 30px;
-   color: #fff;
-   font-size: 16px;
-   font-weight: 700;
-   text-transform: lowercase;
-   background-color: rgb(196, 0, 0);
-   outline: none;
-   cursor: pointer;
-   i{
-      animation: loader 1s infinite;
-   }
-}
-@keyframes loader {
-   from{}
-   to{
-      transform: rotate(360deg);
-   }
-}
-
-.btnOnFollow{
-   @extend .btnFollow;
-   background-color: rgb(216, 216, 216);
-   color: rgba(0, 0, 0, 0.575);
-   border: none;
-}

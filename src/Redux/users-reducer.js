@@ -1,3 +1,5 @@
+import {followedAPI, getUsers} from '../api'
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
@@ -116,5 +118,38 @@ export let disableBtn = (userId, isFeatching) => {
    }
 }
 
+export const getUsersThankCreator = (numberOfPages, numberOfUsers) => {
+   return (dispatch) => {
+      dispatch(isFetching(true))
+      getUsers(numberOfPages, numberOfUsers).then(data => {
+         dispatch(setUsers(data.items))
+         dispatch(setTotalCount(data.totalCount))
+         dispatch(isFetching(false))
+      })
+   }
+}
+
+export const unfollowThunk = (id) => {
+   return (dispatch) => {
+      dispatch(disableBtn(id, true))
+      followedAPI.deleteFollow(id).then(data => {
+         if (data.resultCode === 0) {
+            dispatch(unfollow(id))
+         }
+         dispatch(disableBtn(id, false))
+      })
+   }
+}
+export const followThunk = (id) => {
+   return (dispatch) => {
+      dispatch(disableBtn(id, true))
+      followedAPI.postFollow(id).then(data => {
+         if (data.resultCode === 0) {
+            dispatch(follow(id))
+         }
+         dispatch(disableBtn(id, false))
+      }) 
+   }
+}
 
 export default USERS_REDUCER;

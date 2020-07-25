@@ -52,7 +52,7 @@ let  MESSAGE_REDUCER = (state = initialState, action) => {
    switch (action.type) {
       case ADD_NEW_MESSAGE:
          let message = {
-            id: Date.parse(new Date().toString()),
+            id: Date.now(),
             message: state.addNewMessage
          }
          return{

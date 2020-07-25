@@ -8,6 +8,26 @@ let instance = axios.create({
       }
 })
 
+export let followedAPI = {
+   getFollow(userId) {
+      return instance.get(`follow/${userId}`).then(response => {
+         return response.data
+      })
+   },
+
+   deleteFollow(userId) {
+      return instance.delete(`follow/${userId}`).then(response => {
+         return response.data
+      })
+   },
+
+   postFollow(userId) {
+      return instance.post(`follow/${userId}`).then(response => {
+         return response.data
+      })
+   },
+}
+
 export let getUserProfile = (userId) => {
    return instance.get(`profile/${userId}`).then(response => {
       return response.data
@@ -18,18 +38,9 @@ export let getUsers = (numberOfPages, numberOfUsers) => {
       return response.data
    });
 }
-export let getFollow = (userId) => {
-   return instance.get(`follow/${userId}`).then(response => {
-      return response.data
-   });
-}
-export let deleteFollow = (userId) => {
-   return instance.delete(`follow/${userId}`).then(response => {
-      return response.data
-   });
-}
-export let postFollow = (userId) => {
-   return instance.post(`follow/${userId}`).then(response => {
+
+export let getAuthMe = () => {
+   return instance.get(`auth/me`).then(response => {
       return response.data
    });
 }
