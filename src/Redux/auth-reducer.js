@@ -3,7 +3,7 @@ const SET_AUTH_DATA = 'SET_AUTH_DATA'
 
 let initialState = {
    id: null,
-   login: null,
+   login: false,
    email: null,
    messages: [],
 }

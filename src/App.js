@@ -3,13 +3,14 @@ import './App.css';
 import { Route, BrowserRouter } from 'react-router-dom';
 import Nav from './components/Nav/Nav'
 import Footer from './components/Footer/Footer';
-import Message from './components/Message/Message';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Setting from './components/Settings/Settings';
 import UsersContainer from './components/Users/UsersContainer';
+import MessageContainer from './components/Message/MessageContainer'
 import ProfileContainer from './components/Profile/Profile.container';
 import HeaderContainer from './components/Header/HeaderContainer';
+import Login from './components/Authorization/Login/Login';
 
 function App(props) {
    return (
@@ -18,6 +19,10 @@ function App(props) {
             <HeaderContainer />
             <Nav />
             <div className="mainContent">
+               <Route 
+                  path='/login'
+                  render={() => <Login />}
+               />
                <Route
                   path="/profile/:userId?"
                   render={() => <ProfileContainer />}
@@ -25,7 +30,7 @@ function App(props) {
 
                <Route
                   path="/message"
-                  render={() => <Message />}
+                  render={() => <MessageContainer />}
                />
 
                <Route 

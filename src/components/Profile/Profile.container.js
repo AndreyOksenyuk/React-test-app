@@ -1,7 +1,7 @@
 import React from 'react';
 import Profile from './Profile';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import {
    FollowToggle,
    getUserProfileThankCreator,
@@ -9,6 +9,7 @@ import {
 } from '../../Redux/profile-reducer'
 
 class ProfileContainer extends React.Component {
+   
    componentDidMount(){
       let userId = this.props.match.params.userId;
       if (!userId) {
@@ -19,6 +20,7 @@ class ProfileContainer extends React.Component {
    }
 
    render() {
+      if(!this.props.authorization) return <Redirect to='/login' />
       return <Profile {...this.props} followedUser={this.props.followedUser}/>
    }
 }
@@ -26,6 +28,7 @@ class ProfileContainer extends React.Component {
 const mapStateToProps = (state) => ({
    User: state.profilePage.User,
    followedUser: state.profilePage.followedUser,
+   authorization: state.auth.login,
 })
 
 const UrlDataContainerComponent = withRouter(ProfileContainer)

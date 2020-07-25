@@ -14,7 +14,8 @@ class SubscribeBtnContainer extends React.Component {
 
 let mapStateToProps = (state) => {
    return {
-      disableSubscribeBtn: state.usersPage.disableSubscribeBtn
+      disableSubscribeBtn: state.usersPage.disableSubscribeBtn,
+      authorization: state.auth.login,
    }
 }
 

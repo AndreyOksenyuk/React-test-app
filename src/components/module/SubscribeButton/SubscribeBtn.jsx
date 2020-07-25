@@ -1,8 +1,12 @@
 import React from 'react'
 import s from './SubscribeBtn.module.scss';
+import { NavLink } from 'react-router-dom';
 
 const SubscribeButton = (props) => {
+   console.log(props.authorization);
    let disable = props.disableSubscribeBtn.some(e => e === props.id)
+
+   if (!props.authorization) return <NavLink to='/login' className={s.btnFollow}>войти</NavLink>
    return (
       <>
          {props.userFollowed
