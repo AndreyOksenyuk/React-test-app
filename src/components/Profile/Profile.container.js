@@ -1,12 +1,13 @@
 import React from 'react';
 import Profile from './Profile';
 import { connect } from 'react-redux';
-import { withRouter, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import {
    FollowToggle,
    getUserProfileThankCreator,
    getFollowThankCreator,
 } from '../../Redux/profile-reducer'
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 
 class ProfileContainer extends React.Component {
    
@@ -20,7 +21,6 @@ class ProfileContainer extends React.Component {
    }
 
    render() {
-      if(!this.props.authorization) return <Redirect to='/login' />
       return <Profile {...this.props} followedUser={this.props.followedUser}/>
    }
 }
@@ -30,8 +30,8 @@ const mapStateToProps = (state) => ({
    followedUser: state.profilePage.followedUser,
    authorization: state.auth.login,
 })
-
-const UrlDataContainerComponent = withRouter(ProfileContainer)
+let authRerdirectComponent = withAuthRedirect(ProfileContainer)
+const UrlDataContainerComponent = withRouter(authRerdirectComponent)
 
 export default connect(mapStateToProps, {
    getUserProfile: getUserProfileThankCreator,
