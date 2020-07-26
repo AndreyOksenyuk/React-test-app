@@ -6,6 +6,7 @@ import img from '../../../assets/Image/ava.jpg'
 import UserStatus from './UserStatus';
 
 const MyProfile = (props) => {
+   
    return (
       <div className="MyProfile">
          <div className="MyProfile__user">
@@ -16,7 +17,11 @@ const MyProfile = (props) => {
                      : <img src={{ ...props.photos }.small} alt="avatar" />
                }
                <h5>{props.user.fullName}</h5>
-               <UserStatus />
+               <UserStatus 
+                  myStatus={props.myStatus}
+                  setMyStatus={props.setMyStatus}
+                  changeValueMyStatus={props.changeValueMyStatus}
+               />
                <a href={`mailto:${props.email}`}>{props.email}</a>
             </div>
          </div>

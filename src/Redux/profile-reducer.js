@@ -7,6 +7,7 @@ const DIS_LIKE = 'DIS-LIKE';
 const USER_PROFILE = 'USER_PROFILE'
 const SET_FOLLOWED_USER = 'SET-FOLLOWED-USER'
 const GET_USER_STATUS = 'GET_USER_STATUS'
+const CHANGE_MY_STATUS = 'CHANGE_MY_STATUS'
 
 let initialState = {
    User: {},
@@ -96,6 +97,7 @@ let  PROFILE_REDUCER = (state = initialState, action) => {
             ...state,
             newPostText: action.text,
          }
+
       case LIKE: 
          if (!state.posts[action.index].like.status) {
               return {
@@ -176,6 +178,11 @@ let  PROFILE_REDUCER = (state = initialState, action) => {
          return {
             ...state,
             userStatus: action.status
+         }      
+      case CHANGE_MY_STATUS:
+         return {
+            ...state,
+            userStatus: action.status,
          }
       default:
          return state;
@@ -212,6 +219,10 @@ export let UserStatus = (status) => ({
    type: 'GET_USER_STATUS',
    status
 })
+export let changeValueMyStatus = (status) => ({
+   type: 'CHANGE_MY_STATUS',
+   status,
+})
 
 export const getUserProfileThankCreator= (userId) => {
    return (dispatch) => {
@@ -228,5 +239,6 @@ export const getUserStatus= (userId) => {
       userAPI.getUserStatus(userId).then(data => dispatch(UserStatus(data)));
    }
 }
+
 
 export default PROFILE_REDUCER;

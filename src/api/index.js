@@ -40,7 +40,9 @@ export let userAPI = {
    getUserStatus (userId) {
       return instance.get(`/profile/status/${userId}`).then(response => {
          return response.data
-   })}
+   })},
+   putMyStatus (status) {
+      return instance.put(`/profile/status`, status)}
 }
 
 
