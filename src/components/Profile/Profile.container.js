@@ -6,8 +6,9 @@ import {
    FollowToggle,
    getUserProfileThankCreator,
    getFollowThankCreator,
+   getUserStatus,
 } from '../../Redux/profile-reducer'
-import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 class ProfileContainer extends React.Component {
    
@@ -16,6 +17,7 @@ class ProfileContainer extends React.Component {
       if (!userId) {
          userId = 9482;
       }
+      this.props.getUserStatus(userId)
       this.props.getUserProfile(userId)
       this.props.getFollow(userId)
    }
@@ -27,14 +29,18 @@ class ProfileContainer extends React.Component {
 
 const mapStateToProps = (state) => ({
    User: state.profilePage.User,
+   userStatus: state.profilePage.userStatus,
    followedUser: state.profilePage.followedUser,
    authorization: state.auth.login,
 })
-let authRerdirectComponent = withAuthRedirect(ProfileContainer)
-const UrlDataContainerComponent = withRouter(authRerdirectComponent)
 
-export default connect(mapStateToProps, {
-   getUserProfile: getUserProfileThankCreator,
-   getFollow: getFollowThankCreator,
-   FollowToggle,
-})(UrlDataContainerComponent)
+
+export default compose(
+   withRouter,
+   connect(mapStateToProps, {
+      getUserProfile: getUserProfileThankCreator,
+      getFollow: getFollowThankCreator,
+      getUserStatus,
+      FollowToggle,
+   }),
+)(ProfileContainer)

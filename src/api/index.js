@@ -26,21 +26,27 @@ export let followedAPI = {
          return response.data
       })
    },
+};
+
+export let userAPI = {
+   getUserProfile (userId) {
+      return instance.get(`profile/${userId}`).then(response => {
+         return response.data
+   })},
+   getUsers (numberOfPages, numberOfUsers) {
+      return instance.get(`users?page=${numberOfPages}&count=${numberOfUsers}`).then(response => {
+         return response.data
+   })},
+   getUserStatus (userId) {
+      return instance.get(`/profile/status/${userId}`).then(response => {
+         return response.data
+   })}
 }
 
-export let getUserProfile = (userId) => {
-   return instance.get(`profile/${userId}`).then(response => {
-      return response.data
-   });
-}
-export let getUsers = (numberOfPages, numberOfUsers) => {
-   return instance.get(`users?page=${numberOfPages}&count=${numberOfUsers}`).then(response => {
-      return response.data
-   });
-}
+
 
 export let getAuthMe = () => {
    return instance.get(`auth/me`).then(response => {
-      return response.data
+      return response.data 
    });
 }

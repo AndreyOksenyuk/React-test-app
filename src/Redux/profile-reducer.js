@@ -1,4 +1,4 @@
-import {followedAPI, getUserProfile} from '../api'
+import {followedAPI, userAPI} from '../api'
 
 const ADD_POST = 'ADD-POST';
 const NEW_POST = 'NEW-POST';
@@ -6,9 +6,11 @@ const LIKE = 'LIKE';
 const DIS_LIKE = 'DIS-LIKE';
 const USER_PROFILE = 'USER_PROFILE'
 const SET_FOLLOWED_USER = 'SET-FOLLOWED-USER'
+const GET_USER_STATUS = 'GET_USER_STATUS'
 
 let initialState = {
    User: {},
+   userStatus: null,
    followedUser: null,
    newPostText: '',
    text: 0,
@@ -170,6 +172,11 @@ let  PROFILE_REDUCER = (state = initialState, action) => {
             ...state,
             followedUser: state.followedUser = !state.followedUser
          }
+      case GET_USER_STATUS:
+         return {
+            ...state,
+            userStatus: action.status
+         }
       default:
          return state;
    }
@@ -201,15 +208,24 @@ export let setFollowedUser = (follow) => ({
 export let FollowToggle = () => ({
    type: 'FOLLOWED_TOGLE',
 })
+export let UserStatus = (status) => ({
+   type: 'GET_USER_STATUS',
+   status
+})
 
 export const getUserProfileThankCreator= (userId) => {
    return (dispatch) => {
-      getUserProfile(userId).then(data => dispatch(setUserProfile(data)));     
+      userAPI.getUserProfile(userId).then(data => dispatch(setUserProfile(data)));
    }
 }
 export const getFollowThankCreator= (userId) => {
    return (dispatch) => {
       followedAPI.getFollow(userId).then(data => dispatch(setFollowedUser(data)));
+   }
+}
+export const getUserStatus= (userId) => {
+   return (dispatch) => {
+      userAPI.getUserStatus(userId).then(data => dispatch(UserStatus(data)));
    }
 }
 

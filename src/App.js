@@ -11,6 +11,7 @@ import MessageContainer from './components/Message/MessageContainer'
 import ProfileContainer from './components/Profile/Profile.container';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Authorization/Login/Login';
+import MyProfileContainer from './components/Profile/MyProfile/MyProfileContainer';
 
 function App(props) {
    return (
@@ -22,11 +23,16 @@ function App(props) {
                <Route 
                   path='/login'
                   render={() => <Login />}
+               />               
+               <Route
+                  path="/Myprofile"
+                  render={() => <MyProfileContainer />}
                />
                <Route
                   path="/profile/:userId?"
                   render={() => <ProfileContainer />}
                />
+
 
                <Route
                   path="/message"

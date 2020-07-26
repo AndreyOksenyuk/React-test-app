@@ -1,4 +1,4 @@
-import {followedAPI, getUsers} from '../api'
+import {followedAPI, userAPI} from '../api'
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -121,7 +121,7 @@ export let disableBtn = (userId, isFeatching) => {
 export const getUsersThankCreator = (numberOfPages, numberOfUsers) => {
    return (dispatch) => {
       dispatch(isFetching(true))
-      getUsers(numberOfPages, numberOfUsers).then(data => {
+      userAPI.getUsers(numberOfPages, numberOfUsers).then(data => {
          dispatch(setUsers(data.items))
          dispatch(setTotalCount(data.totalCount))
          dispatch(isFetching(false))

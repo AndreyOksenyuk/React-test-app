@@ -14,13 +14,10 @@ const Profile = (props) => {
          </div>  
          <User 
             {...props.User} 
-            follow={props.follow}
-            unfollow={props.unfollow}
             followedUser={props.followedUser}
-            text={props.text}
-            disableSubscribeBtn={props.disableSubscribeBtn}
-            disableBtn={props.disableBtn}
             FollowToggle={props.FollowToggle}
+            userStatus={props.userStatus}
+            authorization={props.authorization}
          />
 
          <div className={s.posts}>

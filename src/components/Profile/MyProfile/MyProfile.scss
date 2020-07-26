@@ -1,0 +1,31 @@
+.MyProfile{
+   width: 100%;
+   background-color: rgb(242, 252, 255);
+   &__user{
+      height: 400px;
+   }
+   &__posts{
+      overflow: auto;
+   }
+
+}
+
+.MyAvatar{
+   width: 300px;
+   height: 300px;
+}
+
+.MyStatus {
+   display: flex;
+   align-items: center;
+
+   i {
+      margin-left: 10px;
+      cursor: pointer;
+      font-size: 13px;
+
+      &:hover {
+         color: #133ecc;
+      }
+   }
+}

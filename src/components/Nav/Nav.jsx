@@ -6,12 +6,12 @@ const Nav = () =>  {
    return (
       <nav className={s.nav}>
          <ul>
-            <NavLink teg="li" to="/profile" activeClassName={s.active}>Profile</NavLink>
-            <NavLink to="/message" activeClassName={s.active}>Message</NavLink>
-            <NavLink to="/news" activeClassName={s.active}>News</NavLink>
-            <NavLink to="/music" activeClassName={s.active}>Music</NavLink>
-            <NavLink to="/users" activeClassName={s.active}>Users</NavLink>
-            <NavLink to="/setting" activeClassName={s.active}>Settings</NavLink>
+            <NavLink teg="li" to="/Myprofile" activeClassName={s.active}>Моя страница</NavLink>
+            <NavLink to="/message" activeClassName={s.active}>Сообщения</NavLink>
+            <NavLink to="/news" activeClassName={s.active}>Новости</NavLink>
+            <NavLink to="/music" activeClassName={s.active}>Музыка</NavLink>
+            <NavLink to="/users" activeClassName={s.active}>Пользователи</NavLink>
+            <NavLink to="/setting" activeClassName={s.active}>Настройки</NavLink>
          </ul>
       </nav>
    )

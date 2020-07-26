@@ -16,6 +16,7 @@ const User = (props) => {
                      ? <img src={img} alt="avatar" className={s.avatar} />
                      : <img src={{ ...props.photos }.small} alt="avatar" className={s.avatar} />
                }
+               
                <div className = {s.followedBtn} onClick = {() => props.FollowToggle()} >
                <SubscribeBtnContainer 
                   id={props.userId}
@@ -23,7 +24,11 @@ const User = (props) => {
                />
                </div>
                <h2>{props.fullName}</h2>
-               <p>{props.aboutMe}</p>
+               {
+                  props.userStatus ? <i>{props.userStatus}</i>
+                  : <i>без статуса</i>
+               }
+                  
             </div>
          }
       </div>
