@@ -6,20 +6,23 @@ import { withRouter } from 'react-router-dom';
 import { getUserProfileThankCreator, getUserStatus, changeValueMyStatus } from '../../../Redux/profile-reducer';
 import { authMeThankCreator } from '../../../Redux/auth-reducer';
 import Preloader from '../../module/preloader'
-//import {withAuthRedirect} from '../../../hoc/withAuthRedirect';
+import { getAuthMe } from '../../../api';
+import {withAuthRedirect} from '../../../hoc/withAuthRedirect';
 
 class MyProfileContainer extends React.Component {    
       state = {
          preloader: true,
       }
-   componentDidMount(){  
-         setTimeout(() => {
-            this.props.getUserStatus(this.props.id) 
-            this.props.getMyProfile(this.props.id)
+   componentDidMount(){
+      getAuthMe().then(response => {
+         if (response.resultCode === 0) {
+            this.props.getMyProfile(response.data.id)
+            this.props.getUserStatus(response.data.id)
             this.setState({preloader: false})
-         }, 2000);
-         this.props.authMeThankCreator()   
+         }
+      })
    }
+
    render() {     
       if (this.state.preloader) {
          return <Preloader />
@@ -32,14 +35,15 @@ let mapStateToProps = (state) => {
    return {
       user: state.profilePage.User,
       myStatus: state.profilePage.userStatus,
-      id: state.auth.id,
       email: state.auth.email,
+      fulfilled: state.auth.fulfilled,
    }
 }
 
+
 export default compose(
    withRouter,
-   //withAuthRedirect,
+   withAuthRedirect,
    connect(mapStateToProps, {
       getMyProfile: getUserProfileThankCreator,
       authMeThankCreator, getUserStatus, changeValueMyStatus,

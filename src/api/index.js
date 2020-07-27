@@ -45,10 +45,11 @@ export let userAPI = {
       return instance.put(`/profile/status`, status)}
 }
 
-
-
 export let getAuthMe = () => {
    return instance.get(`auth/me`).then(response => {
       return response.data 
    });
+}
+export let postLogin = (email, password, rememberMe) => {
+   return instance.post(`/auth/login`, {email, password, rememberMe}) 
 }

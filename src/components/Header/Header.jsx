@@ -10,7 +10,7 @@ const Header = (props) => {
 			{!props.login
 				? 	<NavLink to='/login' className={s.login__link}>Login</NavLink>
 				: 	<div className={s.login__nik}>
-						<p>{props.login}</p>
+						<NavLink to='/Myprofile'>{props.login}</NavLink>
 						<img src={avatar} alt=""/>
 					</div>
      		}

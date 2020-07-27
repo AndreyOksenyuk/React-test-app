@@ -13,9 +13,8 @@ let AUTH_REDUCER = function (state = initialState, action) {
       case SET_AUTH_DATA:
          return {
             ...state,
-            ...action.data
+            ...action.data,
          }
-   
       default:
          break;
    }
@@ -31,7 +30,7 @@ export const authMeThankCreator = () => {
    return (dispatch) => {
       getAuthMe().then(data => {
             if (data.resultCode === 0) {
-               dispatch(setAuthData({...data.data}))
+               dispatch(setAuthData({...data.data})) 
             }
          })
    }
