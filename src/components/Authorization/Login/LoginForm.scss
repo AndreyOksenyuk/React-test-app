@@ -98,9 +98,11 @@ $gray-light: #f5f6f8;
    margin: 10px;
    color: #fff;
    text-transform: lowercase;
+
 }
 
 #rememberMe{
+   cursor: pointer;
    &:checked + .checkBox {
       color: rgb(131, 255, 131);
    }

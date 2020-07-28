@@ -1,0 +1,25 @@
+.email{
+   position: relative;
+   input{
+      width: 275px;
+   }
+}
+.emailError{
+   position: relative;
+   input{
+      width: 275px;
+      box-shadow: 0px 0px 10px 1px #FF0808;
+   }
+}
+
+.messageError{
+   position: absolute;
+   bottom: 0;
+   left: -290px;
+   color: rgb(255, 255, 255);
+   font-size: 15px;
+   font-weight: 600;
+   background-color: red;
+   padding: 15px 20px;
+   clip-path: polygon(0% 0%, 95% 0, 95% 30%, 100% 50%, 95% 70%, 95% 100%, 0 100%);
+}

@@ -76,7 +76,7 @@ let  PROFILE_REDUCER = (state = initialState, action) => {
          let newPost = {
             id: Date.now(),
             user: 'User name',
-            message: state.newPostText,
+            message: action.post,
             like: {
                status: false,
                count: 0,
@@ -85,12 +85,10 @@ let  PROFILE_REDUCER = (state = initialState, action) => {
                status: false,
                count: 0,
             }
-
          }
          return {
             ...state,
             posts: [newPost, ...state.posts ],
-            newPostText: '',
          }
       case NEW_POST: 
          return {
@@ -189,8 +187,9 @@ let  PROFILE_REDUCER = (state = initialState, action) => {
    }
 }
 
-export let actionCreatorAddPost = () => ({
+export let actionCreatorAddPost = (post) => ({
    type: ADD_POST,
+   post,
 })
 export let actionCreatorChangePost = (text) => ({
    type: NEW_POST,
