@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form'
 import './LoginForm.scss'
 import EmailInput from '../../module/LoginForm/EmailInput';
 import Password from '../../module/LoginForm/Password';
-import { email, maxLength255, minLength4 } from '../../utils/validators/Validator';
+import { email, maxLength500, minLength4 } from '../../utils/validators/Validator';
 
 
 const LoginForm = (props) => {
@@ -23,7 +23,7 @@ const LoginForm = (props) => {
                   type="email" placeholder='email:' 
                   name='email' 
                   component={EmailInput}
-                  validate={[email, maxLength255]} 
+                  validate={[email]} 
                />
             </div>
             <div className="flex-row">
@@ -41,7 +41,7 @@ const LoginForm = (props) => {
                   placeholder='password' 
                   name='password' 
                   component={Password} 
-                  validate={[maxLength255, minLength4]}
+                  validate={[maxLength500, minLength4]}
                />
             </div>
             <Field 

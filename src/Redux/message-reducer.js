@@ -1,5 +1,4 @@
 const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
-const CHANGE_NEW_MESSAGE = 'CHANGE-NEW-MESSAGE'
 
 let initialState = {
    dialogs: [{
@@ -28,7 +27,6 @@ let initialState = {
          },
       ],
 
-      addNewMessage: '',
       message: [{
             id: 1,
             message: 'Hello!!! It is my first message. How are you?'
@@ -53,28 +51,19 @@ let  MESSAGE_REDUCER = (state = initialState, action) => {
       case ADD_NEW_MESSAGE:
          let message = {
             id: Date.now(),
-            message: state.addNewMessage
+            message: action.message
          }
          return{
             ...state,
             message: [...state.message, message],
-            addNewMessage: '',
-         }
-      case CHANGE_NEW_MESSAGE:
-         return{
-            ...state,
-            addNewMessage: action.message,
          }
       default:
          return state;
    } 
 }
-export let actionCreatorAddMessage = () => ({
+export let actionCreatorAddMessage = (message) => ({
    type: ADD_NEW_MESSAGE,
-})
-export let actionCreatorChangeMessage = (message) => ({
-   type: CHANGE_NEW_MESSAGE,
-   message: message,
+   message,
 })
 
 

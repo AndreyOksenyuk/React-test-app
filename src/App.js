@@ -10,7 +10,7 @@ import UsersContainer from './components/Users/UsersContainer';
 import MessageContainer from './components/Message/MessageContainer'
 import ProfileContainer from './components/Profile/Profile.container';
 import HeaderContainer from './components/Header/HeaderContainer';
-import Login from './components/Authorization/Login/Login';
+import LoginContainer from './components/Authorization/Login/LoginContainer';
 import MyProfileContainer from './components/Profile/MyProfile/MyProfileContainer';
 
 function App(props) {
@@ -22,7 +22,7 @@ function App(props) {
             <div className="mainContent">
                <Route 
                   path='/login'
-                  render={() => <Login />}
+                  render={() => <LoginContainer />}
                />               
                <Route
                   path="/Myprofile"

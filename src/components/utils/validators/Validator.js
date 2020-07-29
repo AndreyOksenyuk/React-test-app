@@ -1,9 +1,9 @@
 
 const maxLength = max => value =>
    value && value.length > max 
-   ? `Must be ${max} characters or less` 
+   ? `Максимальная длина сообщения ${max} символов` 
    : undefined
-export const maxLength255 = maxLength(255)
+export const maxLength500 = maxLength(500)
 
 const minLength = min => value =>
    value && value.length < min 

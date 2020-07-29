@@ -53,3 +53,6 @@ export let getAuthMe = () => {
 export let postLogin = (email, password, rememberMe) => {
    return instance.post(`/auth/login`, {email, password, rememberMe}) 
 }
+export let deleteLogin = () => {
+   return instance.delete(`/auth/login`) 
+}

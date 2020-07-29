@@ -1,0 +1,24 @@
+.form{
+   position: relative;
+   width: 100%;
+   p{
+      position: absolute;
+      bottom: 0;
+      color: #ff0000;
+   }
+}
+.textarea{
+   width: 100%;
+   height: 100px;
+   margin: 10px 0;
+   padding: 10px;
+   resize: none;
+   margin-bottom: 40px;
+   border: 1px solid #ccc;
+   outline: none;
+}
+
+.noValid{
+   @extend .textarea;
+   border: 1px solid red;
+}

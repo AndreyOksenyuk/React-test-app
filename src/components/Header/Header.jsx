@@ -4,8 +4,12 @@ import { NavLink } from 'react-router-dom';
 import avatar from '../../assets/Image/ava.jpg'
 
 const Header = (props) => {
+	let Logout = () => {
+		props.logout()
+	}
 	return (
 		<header className={s.header}>
+		<NavLink to='./login' className={s.logoutBtn} onClick={Logout}>Выйти</NavLink>
 		<div className={s.login}>
 			{!props.login
 				? 	<NavLink to='/login' className={s.login__link}>Login</NavLink>
