@@ -50,6 +50,7 @@ export let getAuthMe = () => {
       return response.data 
    });
 }
+
 export let postLogin = (email, password, rememberMe) => {
    return instance.post(`/auth/login`, {email, password, rememberMe}) 
 }

@@ -4,10 +4,11 @@ import './LoginForm.scss'
 import EmailInput from '../../module/LoginForm/EmailInput';
 import Password from '../../module/LoginForm/Password';
 import { email, maxLength500, minLength4 } from '../../utils/validators/Validator';
+import { Redirect } from 'react-router-dom';
 
 
 const LoginForm = (props) => {
-
+  
    return (
       <div>
          <form onSubmit={props.handleSubmit} className='login-form'>
@@ -52,7 +53,12 @@ const LoginForm = (props) => {
             />
             <label className="checkBox" htmlFor="rememberMe">запомнить меня</label>
 
-            <button className='lf--submit'>submit</button>
+            <button className='lf--submit'>
+            {props.isAuth 
+               ? <Redirect to='/Myprofile'></Redirect>
+               : 'submit'
+            }
+            </button>
          </form>
       </div>
 

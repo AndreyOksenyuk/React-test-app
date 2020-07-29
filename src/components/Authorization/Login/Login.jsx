@@ -9,7 +9,7 @@ const Login = (props) => {
    return (
       <div className={style.Login}>
          <h3>Авторизация</h3>
-         <LoginReduxForm onSubmit={submitLogin}/>
+         <LoginReduxForm onSubmit={submitLogin} isAuth={props.isAuth}/>
       </div>
    );
 }

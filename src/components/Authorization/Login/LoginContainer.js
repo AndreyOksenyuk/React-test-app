@@ -4,12 +4,12 @@ import Login from './Login';
 import {loginThankCreator} from '../../../Redux/auth-reducer';
 
 const LoginContainer = (props) => {
-   return <Login {...props}/>;
+   return <Login {...props}/>; 
 }
 
 let mapStateToProps = (state) => {
    return {
-
+      isAuth: state.auth.isAuth,
    }
 }
 
