@@ -8,6 +8,10 @@ import { Redirect } from 'react-router-dom';
 
 
 const LoginForm = (props) => {
+
+   if (props.isAuth) {
+   return   <Redirect to='/Myprofile'></Redirect>
+   }
   
    return (
       <div>
@@ -50,15 +54,12 @@ const LoginForm = (props) => {
                type="checkbox" 
                name='rememberMe' 
                component='input' 
-            />
+            />      
             <label className="checkBox" htmlFor="rememberMe">запомнить меня</label>
-
-            <button className='lf--submit'>
-            {props.isAuth 
-               ? <Redirect to='/Myprofile'></Redirect>
-               : 'submit'
+            <button className='lf--submit'>submit</button>    
+            {
+               props.error && <div className="formError"><p>{props.error}</p></div>
             }
-            </button>
          </form>
       </div>
 

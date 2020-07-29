@@ -1,4 +1,5 @@
 import { getAuthMe, postLogin, deleteLogin } from '../api'
+import { stopSubmit } from 'redux-form'
 const SET_AUTH_DATA = 'SET_AUTH_DATA'
 const LOGIN_SET_ME_ID = 'LOGIN_SET_ME_ID'
 const LOGOUT = 'LOGOUT'
@@ -70,11 +71,12 @@ export const loginThankCreator = (email, password, rememberMe) => (dispatch) => 
          dispatch(loginSetMeId(response.data.data.userId, response.data.messages, true))
          getAuthMe().then(data => {
             if (data.resultCode === 0) {
-               dispatch(setAuthData({
-                  ...data.data
-               }))
+               dispatch(setAuthData({...data.data}))
             }
          })
+      }
+      else{
+         dispatch(stopSubmit('login', {_error: response.data.messages[0]}))
       }
    })
 }
