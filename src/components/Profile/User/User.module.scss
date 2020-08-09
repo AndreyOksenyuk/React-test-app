@@ -1,29 +1,47 @@
 .user {
    width: 100%;
-   height: 300px;
+   min-height: 500px;
    background-color: rgb(247, 247, 247);
    padding: 10px;
-   &__inner{
+
+   &__inner {
       display: flex;
-      flex-direction: column;
       width: 100%;
       height: 100%;
-      h2{
+
+      h2 {
          margin: 0;
          width: 200px;
       }
    }
 }
-.avatar {
-   width: 150px;
-   height: 150px;
-   border-radius: 5px;
+
+.UserImgBtnStatus {
+   width: 30%;
+   .avatar {
+      width: 250px;
+      height: 250px;
+      border-radius: 5px;
+   }
+
+   .followedBtn {
+      position: relative;
+      width: 140px;
+      height: 30px;
+      margin: 10px;
+   }
+   h2{
+      margin-bottom: 10px;
+   }
+   i{
+      color: rgb(36, 36, 36);
+      background-color: rgb(240, 240, 240);
+      padding: 5px 10px;
+   }
 }
 
-.followedBtn{
+
+.UserInformData {
    position: relative;
-   width: 140px;
-   height: 30px;
-   margin: 10px;
+   width: 50%;
 }
-

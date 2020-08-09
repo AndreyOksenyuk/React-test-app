@@ -2,36 +2,36 @@ import React from 'react';
 import './MyProfile.scss';
 import AddPostContainer from '../Posts/AddPost/AddPostContainer';
 import MapPostContainer from '../Posts/MapPosts/MapPostContainer';
-import img from '../../../assets/Image/ava.jpg'
-import UserStatus from './UserStatus';
 
-const MyProfile = (props) => {
-   
+import UserInfo from './UserInformation/UserInfo';
+import UserAvatar from './UserInformation/UserAvatar';
+
+const MyProfile = React.memo(props => {
+
    return (
       <div className="MyProfile">
          <div className="MyProfile__user">
-            <div className="">
-               {
-                  !{ ...props.user.photos }.small
-                     ? <img src={img} alt="avatar"  className="MyAvatar"/>
-                     : <img src={{ ...props.photos }.small} alt="avatar" />
-               }
-               <h5>{props.user.fullName}</h5>
-               <UserStatus 
-                  myStatus={props.myStatus}
-                  setMyStatus={props.setMyStatus}
-                  changeValueMyStatus={props.changeValueMyStatus}
-               />
-               <a href={`mailto:${props.email}`}>{props.email}</a>
-            </div>
+            <UserAvatar
+               photoLarge={{ ...props.user.photos }.large}
+               saveMyPhotoTC={props.saveMyPhotoTC}
+            />
+            <UserInfo
+               myStatus={props.myStatus}
+               changeValueMyStatus={props.changeValueMyStatus}
+               user={props.user}
+               email={props.email}
+               saveMyDataTC={props.saveMyDataTC}
+               isPutData={props.isPutData}
+               disableBtn={props.disableBtn}
+            />
          </div>
-      
-         <div className = "MyProfile__posts" >
+
+         <div className="MyProfile__posts" >
             <AddPostContainer />
             <MapPostContainer />
          </div>
       </div>
    );
-}
+});
 
 export default MyProfile;

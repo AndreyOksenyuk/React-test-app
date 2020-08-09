@@ -13,13 +13,13 @@ const SubscribeButton = (props) => {
                disabled = {disable}
                className={s.btnOnFollow}
                onClick={() => props.unfollow(props.id)}
-            >{disable ? <i className="fa fa-spinner" aria-hidden="true"></i> : 'отписаться'}</button>
+            >{disable ? <i className="fa fa-spinner fa-pulse fa-fw"></i> : 'отписаться'}</button>
 
             : <button
                disabled = {disable}
                className={s.btnFollow}
                onClick={() => props.follow(props.id)}
-            >{disable ? <i className="fa fa-spinner" aria-hidden="true"></i> : 'Подписаться'}</button>
+            >{disable ? <i className="fa fa-spinner fa-pulse fa-fw"></i> : 'Подписаться'}</button>
          }
       </>
    )

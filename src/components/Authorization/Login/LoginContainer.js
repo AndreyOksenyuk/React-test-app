@@ -1,18 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Login from './Login';
-import {loginThankCreator} from '../../../Redux/auth-reducer';
+import {loginThankCreator, setCaptchaUrl} from '../../../Redux/auth-reducer';
+import { authAPI } from '../../../api';
 
 const LoginContainer = (props) => {
-   return <Login {...props}/>; 
+   const onChangeCaptcha = () => {
+      authAPI.getCaptchaURL().then(response => {
+         props.setCaptchaUrl(response.data.url)
+      })
+   }
+   return <Login {...props} onChangeCaptcha={onChangeCaptcha}/>; 
 }
 
 let mapStateToProps = (state) => {
    return {
       isAuth: state.auth.isAuth,
+      captchaURL: state.auth.captchaURL,
+      disableSubmitBtn: state.auth.disableSubmitBtn,
    }
 }
 
 export default connect(mapStateToProps, {
-   loginThankCreator
+   loginThankCreator, setCaptchaUrl
 })(LoginContainer)

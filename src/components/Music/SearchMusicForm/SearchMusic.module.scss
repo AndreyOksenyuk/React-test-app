@@ -1,0 +1,17 @@
+.inputWrapper {
+   display: flex;
+   width: 400px;  
+   height: 50px;
+   background-color: #fff;
+   z-index: 2;
+   input {
+      color: rgb(48, 48, 48);
+      border: none;
+      padding: 5px;
+      outline: none;
+      font-size: 20px;
+      border-bottom: 2px solid #6b6b6b;
+      margin-right: 20px;
+   }
+
+}

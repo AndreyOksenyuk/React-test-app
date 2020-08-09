@@ -10,6 +10,7 @@ let onAddPost = (value) => {
    return (
       <div className = {s.addPost}>
          <AddPostForm 
+            postsLength={props.postsLength}
             onSubmit={onAddPost}
          />
       </div>

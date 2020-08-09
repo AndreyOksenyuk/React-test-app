@@ -4,11 +4,8 @@ import style from './AddMessageForm.module.scss'
 const TextareaPost = ({input, meta, ...props}) => {
    return (
       <div className={style.form}>
-         <textarea {...input} {...props} className={meta.valid ? style.textarea : style.noValid}/>
-         {
-            !meta.valid &&
-             <p>{meta.error}</p>
-         }
+         <p className={style.textError} style={meta.valid ? { opacity: '0' } : { opacity: '1' }}>Добавить запись &#9998;</p>        
+         <textarea {...input} {...props} className={style.textarea }/>
       </div>
    );
 }

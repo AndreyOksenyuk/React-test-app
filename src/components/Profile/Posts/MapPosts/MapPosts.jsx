@@ -1,9 +1,10 @@
 import React from 'react';
 import Posts from '../Posts.jsx';
+import style from '../Post.module.scss'
 
 const MapPost = (props) => {
    return (
-      <div className="MapPosts">
+      <div className={style.MapPosts}>
          {
             props.posts.map((post, index) => {
                return <Posts 

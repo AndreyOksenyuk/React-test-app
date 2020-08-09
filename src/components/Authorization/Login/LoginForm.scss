@@ -73,12 +73,17 @@ $gray-light: #f5f6f8;
    cursor: pointer;
    font-size: 0.9em;
    font-weight: 600;
-   text-shadow: 0 1px 0 rgba(black, .2);
+   text-shadow: 0 1px 0 rgba(#000000, .2);
+   text-transform: uppercase;
 
    &:focus {
       outline: none;
       transition: transform .15s ease;
       transform: scale(1.1);
+   }
+
+   &:disabled{
+      background: #ccc;
    }
 }
 
@@ -115,5 +120,17 @@ $gray-light: #f5f6f8;
    transform: translateX(-50%);
    p{
       color: red;
+   }
+}
+.Captca_wrapper{
+   margin: 10px;
+   img{
+      margin-bottom: 10px;
+      cursor: pointer;
+   }
+   #captcha{
+      height: 40px;
+      padding: 0 5px;
+      font-size: 18px;
    }
 }

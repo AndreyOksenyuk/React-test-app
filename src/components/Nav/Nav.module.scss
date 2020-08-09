@@ -22,7 +22,7 @@
    text-decoration: none;
    margin-top: 20px;
    cursor: pointer;
-   transition: all 0.2s linear;
+   transition: all 0.1s linear;
 }
 
 .nav ul a:last-child {
@@ -30,11 +30,19 @@
 }
 
 .nav ul a:hover {
-   text-decoration: underline;
-   color: #fff;
+   color: rgb(161, 236, 255);
+   text-shadow: 1px 1px 7px rgba(150, 150, 150, 1);
 }
 
 .active{
    color: rgb(24, 179, 206) !important;
+}
+
+.setting{
+   position: relative;
+   margin-top: 50px;
+   i{
+      margin-right: 10px;
+   }
 }
 

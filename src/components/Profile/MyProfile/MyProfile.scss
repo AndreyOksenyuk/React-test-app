@@ -1,31 +1,219 @@
-.MyProfile{
+.MyProfile {
    width: 100%;
-   background-color: rgb(242, 252, 255);
-   &__user{
-      height: 600px;
-   }
-   &__posts{
+   height: 100%;
+   padding: 20px;
+   overflow: auto;
+
+   &__posts {
       overflow: auto;
    }
 
 }
 
-.MyAvatar{
-   width: 300px;
-   height: 300px;
+.MyProfile__user {
+   display: flex;
+   min-height: 400px;
+   margin-bottom: 100px;
 }
 
-.MyStatus {
-   display: flex;
-   align-items: center;
+.UserInform {
+   &__name {
+      font-size: 32px;
+      margin-bottom: 20px;
+   }
 
-   i {
-      margin-left: 10px;
+   &__status {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.158);
+
+      .MyStatus {
+         display: flex;
+         align-items: center;
+         font-size: 18px;
+         margin-bottom: 5px;
+
+         i {
+            margin-left: 10px;
+            font-size: 13px;
+            cursor: pointer;
+
+            &:hover {
+               color: #133ecc;
+            }
+         }
+      }
+   }
+}
+
+.UserInform_wrapper {
+   position: relative;
+   width: 400px;
+
+   form {
+      position: relative;
+   }
+
+   .openFormBtn {
+      position: absolute;
+      right: -50px;
+      color: rgb(63, 99, 216);
+      user-select: none;
       cursor: pointer;
-      font-size: 13px;
+   }
+}
+
+.formErrorProfile {
+   width: 100%;
+   font-size: 18px;
+   font-weight: 600;
+   padding: 5px;
+   margin: 20px;
+   border-radius: 5px;
+   animation: showError 1s linear forwards;
+   text-align: center;
+   background-color: rgba(255, 0, 0, 0.1);
+   color: red;
+}
+
+.formSuccesProfile {
+   @extend .formErrorProfile;
+   color: green;
+   background-color: rgba(0, 255, 0, 0.1);
+}
+
+@keyframes showError {
+   0% {
+      opacity: 0;
+   }
+
+   25% {
+      opacity: 1;
+   }
+
+   50% {
+      opacity: 0;
+   }
+
+   100% {
+      opacity: 1;
+   }
+}
+
+
+
+.UserInform__data {
+   margin-top: 20px;
+   font-size: 16px;
+   font-weight: 500;
+   margin-bottom: 20px;
+
+   &-inner {
+      display: flex;
+      margin-bottom: 10px;
+
+      input {
+         border: none;
+         border-bottom: 1px solid #ccc;
+         outline: none;
+      }
+
+      b {
+         margin-right: 10px;
+      }
+
+      p {
+         i {
+            font-size: 14px;
+            font-weight: 200;
+         }
+      }
+
+      a {
+         text-decoration: none;
+         color: #000;
+      }
+   }
+}
+
+.UserInform-textArea {
+   display: flex;
+   flex-direction: column;
+
+   textarea {
+      max-width: 300px;
+      height: 100px;
+      padding: 10px;
+      font-size: 17px;
+      margin-top: 10px;
+   }
+}
+
+.UserInform__data-contacts {
+   display: flex;
+   flex-direction: column;
+
+   .SocialLink {
+      display: flex;
+      margin: 15px 0 0 20px;
+
+      input {
+         border: none;
+         border-bottom: 1px solid #ccc;
+         outline: none;
+         margin-left: 10px;
+      }
+   }
+}
+
+.MyPhotoWrapper {
+   position: relative;
+   width: 300px;
+   height: 300px;
+   margin: 0 30px 30px 0;
+
+   #inputPhoto {
+      display: none;
+      position: absolute;
+      top: 40px;
+      right: 70px;
+   }
+
+   .AddAvatarSVG {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 30px;
+      fill: rgba(0, 0, 0, 0.8);
+      transition: all .1s linear;
+      opacity: 0;
+      cursor: pointer;
 
       &:hover {
-         color: #133ecc;
+         fill: rgba(0, 0, 0, 0.4);
+
+      }
+   }
+
+   &:hover {
+      .AddAvatarSVG {
+         opacity: 1;
+      }
+   }
+}
+
+.MyAvatar {
+   width: 100%;
+   height: 100%;
+}
+
+.UserSocial {
+   p {
+      margin-left: 20px;
+      padding-top: 5px;
+
+      i {
+         font-size: 14px;
+         font-weight: 400;
+         color: rgb(141, 141, 141);
       }
    }
 }

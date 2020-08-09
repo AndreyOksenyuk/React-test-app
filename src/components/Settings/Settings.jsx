@@ -1,11 +1,11 @@
 import React from 'react';
-import s from './Settings.module.css'
+import s from './Settings.module.scss'
 
 
-const Setting = () => {
+const Setting = (props) => {
    return ( 
    <div className = {s.setting} >
-      <h1>Settings</h1>
+      <h1>{props.text}</h1>
    </div>
    )
 }

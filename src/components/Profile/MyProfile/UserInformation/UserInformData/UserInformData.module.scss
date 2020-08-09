@@ -1,0 +1,46 @@
+.UserInform__data {
+   margin-top: 20px;
+   font-size: 16px;
+   font-weight: 500;
+   margin-bottom: 20px;
+
+   &_inner {
+      display: flex;
+      margin-bottom: 10px;
+
+      input {
+         border: none;
+         border-bottom: 1px solid #ccc;
+         outline: none;
+      }
+
+      b {
+         margin-right: 10px;
+      }
+
+      p {
+         i {
+            font-size: 14px;
+            font-weight: 200;
+         }
+      }
+
+      a {
+         text-decoration: none;
+         color: #000;
+      }
+   }
+}
+
+.UserSocial {
+   p {
+      margin-left: 20px;
+      padding-top: 5px;
+
+      i {
+         font-size: 14px;
+         font-weight: 400;
+         color: rgb(141, 141, 141);
+      }
+   }
+}

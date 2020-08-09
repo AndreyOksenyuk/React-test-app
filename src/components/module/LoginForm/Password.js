@@ -8,10 +8,10 @@ const Password = ({ input, meta, ...props }) => {
       <div className={error || dirty ? style.emailError : style.email}>
          <input {...input} {...props} />
          {error &&
-            <p className={style.messageError}>{meta.error}</p>
+            <p className={style.messageError}>Пароль должен быть не менее 4 символов</p>
          }
          {dirty &&
-            <p className={style.messageError}>Поле не должно быть пустым</p>
+            <p className={style.messageError}>Поле password не должно быть пустым</p>
          }
       </div>
    );
