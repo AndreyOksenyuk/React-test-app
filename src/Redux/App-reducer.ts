@@ -4,8 +4,9 @@ let initialState = {
    Error: null,
    textError: null,
 }
+export type InitialStateType = type initialState
 
-const APP_REDUCER = (state = initialState, action) => {
+const APP_REDUCER = (state = initialState, action): initialStateType => {
    switch (action.type) {
       case SET_ERROR:
          return{
