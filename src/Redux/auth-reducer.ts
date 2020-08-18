@@ -1,13 +1,25 @@
-import { authAPI } from '../api'
-import { stopSubmit } from 'redux-form'
-const SET_AUTH_DATA = 'SET_AUTH_DATA'
-const LOGIN_SET_ME_ID = 'LOGIN_SET_ME_ID'
-const LOGOUT = 'LOGOUT'
-const SET_CAPTCHA_URL = 'SET_CAPTCHA_URL'
-const DISABLE_SUBMIT_BUTTON = 'DISABLE_SUBMIT_BUTTON'
-const SET_MY_AVATAR = 'auth-setMyAvatar/SET_MY_AVATAR'
+import {authAPI} from '../api'
+import {stopSubmit} from 'redux-form'
 
-let initialState = {
+const SET_AUTH_DATA: string = 'SET_AUTH_DATA'
+const LOGIN_SET_ME_ID: string = 'LOGIN_SET_ME_ID'
+const LOGOUT: string = 'LOGOUT'
+const SET_CAPTCHA_URL: string = 'SET_CAPTCHA_URL'
+const DISABLE_SUBMIT_BUTTON: string = 'DISABLE_SUBMIT_BUTTON'
+const SET_MY_AVATAR: string = 'auth-setMyAvatar/SET_MY_AVATAR'
+
+type initialStateType = {
+   id: null | number,
+   login: null | string,
+   email: null | string,
+   myAvatar: null | string,
+   messages: null | string,
+   isAuth: boolean,
+   captchaURL: null | string,
+   disableSubmitBtn: boolean,
+}
+
+let initialState: initialStateType = {
    id: null,
    login: null,
    email: null,
@@ -18,13 +30,13 @@ let initialState = {
    disableSubmitBtn: false,
 }
 
-let AUTH_REDUCER = function (state = initialState, action) {
+const AUTH_REDUCER = (state = initialState, action: any): initialStateType => {
    switch (action.type) {
       case SET_AUTH_DATA:
          return {
             ...state,
             ...action.data,
-            isAuth: true, 
+            isAuth: true,
          }
       case LOGIN_SET_ME_ID:
          return {
@@ -43,17 +55,17 @@ let AUTH_REDUCER = function (state = initialState, action) {
             isAuth: action.isAuth,
          }
       case SET_CAPTCHA_URL:
-         return{
+         return {
             ...state,
             captchaURL: action.url,
          }
       case DISABLE_SUBMIT_BUTTON:
-         return{
+         return {
             ...state,
             disableSubmitBtn: action.boolean,
          }
       case SET_MY_AVATAR:
-         return{
+         return {
             ...state,
             myAvatar: action.avatar,
          }
@@ -63,45 +75,45 @@ let AUTH_REDUCER = function (state = initialState, action) {
    return state;
 }
 
-export const setAuthData = (data) => ({
+export const setAuthData = (data: any) => ({
    type: SET_AUTH_DATA,
-   data: data, 
+   data: data,
 })
-const loginSetMeId = (id, messages, isAuth) => ({
+const loginSetMeId = (id: number, messages: string, isAuth: boolean) => ({
    type: LOGIN_SET_ME_ID,
    id, messages, isAuth
 })
-const logout = (id, messages, isAuth) => ({
+const logout = (id: number | null, messages: string | null, isAuth: boolean) => ({
    type: LOGOUT,
    id, messages, isAuth
 })
-export const setCaptchaUrl = (url) => ({
+export const setCaptchaUrl = (url: string | null) => ({
    type: SET_CAPTCHA_URL,
    url,
 })
-const setDisableSubmitBtn = (boolean) => ({
+const setDisableSubmitBtn = (boolean: boolean) => ({
    type: DISABLE_SUBMIT_BUTTON,
    boolean,
 })
-export const setMyAvatar = (avatar) => ({
+export const setMyAvatar = (avatar: string) => ({
    type: SET_MY_AVATAR,
    avatar,
 })
 
 
 export const authMeThankCreator = () => {
-   return (dispatch) => {
+   return (dispatch: any) => {
       authAPI.getAuthMe().then(data => {
-            if (data.resultCode === 0) {
-               dispatch(setAuthData({...data.data})) 
-            }
-         })
+         if (data.resultCode === 0) {
+            dispatch(setAuthData({...data.data}))
+         }
+      })
    }
 }
 
-export const loginThankCreator = (email, password, rememberMe, captcha) => async (dispatch) => {
+export const loginThankCreator = (email: string, password: number, rememberMe: boolean, captcha: string) => async (dispatch: any) => {
    dispatch(setDisableSubmitBtn(true))
-  await authAPI.postLogin(email, password, rememberMe, captcha).then(response => {
+   await authAPI.postLogin(email, password, rememberMe, captcha).then(response => {
       if (response.data.resultCode === 0) {
          dispatch(loginSetMeId(response.data.data.userId, response.data.messages, true))
          authAPI.getAuthMe().then(data => {
@@ -110,9 +122,8 @@ export const loginThankCreator = (email, password, rememberMe, captcha) => async
                dispatch(setCaptchaUrl(null))
             }
          })
-      }
-      else{
-         if (response.data.resultCode === 10){
+      } else {
+         if (response.data.resultCode === 10) {
             authAPI.getCaptchaURL().then(response => {
                dispatch(setCaptchaUrl(response.data.url))
             })
@@ -122,13 +133,12 @@ export const loginThankCreator = (email, password, rememberMe, captcha) => async
    })
    dispatch(setDisableSubmitBtn(false))
 }
-export const logoutThankCreator = () => (dispatch) => {
+export const logoutThankCreator = () => (dispatch: any) => {
    authAPI.deleteLogin().then(response => {
       if (response.data.resultCode === 0) {
          dispatch(logout(null, null, false))
       }
    })
 }
-
 
 export default AUTH_REDUCER;

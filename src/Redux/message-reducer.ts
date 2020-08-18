@@ -1,6 +1,20 @@
-const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
+const ADD_NEW_MESSAGE:string = 'ADD-NEW-MESSAGE';
 
-let initialState = {
+type DialogsType = {
+   id: number
+   user: string
+}
+type MessageType ={
+   id: number
+   message: string
+}
+
+type InitialStateTypes = {
+   dialogs: Array<DialogsType>
+   message: Array<MessageType>
+}
+
+let initialState:InitialStateTypes = {
    dialogs: [{
             id: 1,
             user: 'Andrey',
@@ -26,8 +40,7 @@ let initialState = {
             user: 'Dimon',
          },
       ],
-
-      message: [{
+   message: [{
             id: 1,
             message: 'Hello!!! It is my first message. How are you?'
          },
@@ -46,7 +59,7 @@ let initialState = {
       ],
 }
 
-let  MESSAGE_REDUCER = (state = initialState, action) => {
+let  MESSAGE_REDUCER = (state = initialState, action:any):InitialStateTypes => {
    switch (action.type) {
       case ADD_NEW_MESSAGE:
          let message = {
@@ -61,7 +74,12 @@ let  MESSAGE_REDUCER = (state = initialState, action) => {
          return state;
    } 
 }
-export let actionCreatorAddMessage = (message) => ({
+type ActionCreatorAddMessageType = {
+   type: typeof  ADD_NEW_MESSAGE
+   message: string
+}
+
+export let actionCreatorAddMessage = (message:string):ActionCreatorAddMessageType => ({
    type: ADD_NEW_MESSAGE,
    message,
 })

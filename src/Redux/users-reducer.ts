@@ -1,40 +1,53 @@
 import {followedAPI, userAPI} from '../api'
 
-const FOLLOW = 'FOLLOW';
-const UNFOLLOW = 'UNFOLLOW';
+const FOLLOW = 'users-follow/FOLLOW';
+const UNFOLLOW = 'users-unfollow/UNFOLLOW';
 const SET_USERS = 'SET-USERS';
 const SET_PAGE = 'SET-PAGE';
 const SET_TOTAL_COUNT = 'SET-TOTAL-COUNT'
 const IS_FETCHING = 'IS_FETCHING'
 const DISABLE_SUBSCRIBE_BTN = 'DISABLE_SUBSCRIBE_BTN'
 
-let initialState = {
-   users: [],
-   numberOfPages: 1,
-   numberOfUsers: 6,
-   totalUsersCount: 0,
-   isFetching: false,
-   portitionSize: 10,
-   disableSubscribeBtn: []
+
+type PhotoType = {
+   small: string | null
+   large: string | null
 }
 
-let USERS_REDUCER = (state = initialState, action) => {
+type UsersType = {
+   id: number
+   name: string
+   status: string | null
+   photos: Array<PhotoType>
+   followed: boolean
+}
+
+let initialState = {
+   users: [] as Array<UsersType>,
+   numberOfPages: 1 as number,
+   numberOfUsers: 6 as number,
+   totalUsersCount: 0 as number,
+   isFetching: false as boolean,
+   portitionSize: 10 as number,
+   disableSubscribeBtn: [] as Array<number>
+}
+
+export type InitialState = typeof initialState
+
+let USERS_REDUCER = (state = initialState, action: any): InitialState => {
    switch (action.type) {
-      case FOLLOW: 
+      case FOLLOW:
          return {
             ...state,
             users: state.users.map(e => {
-               if (e.id === action.id ) {
-                  return {...e, followed: true}
-               }
-               return e
+               return e.id === action.id ? {...e, followed: true} : e
             })
-         }                
-      case UNFOLLOW: 
+         }
+      case UNFOLLOW:
          return {
             ...state,
             users: state.users.map(e => {
-               if (e.id === action.id ) {
+               if (e.id === action.id) {
                   return {...e, followed: false}
                }
                return e
@@ -44,82 +57,86 @@ let USERS_REDUCER = (state = initialState, action) => {
          return {
             ...state,
             users: action.users
-         }               
+         }
       case SET_PAGE:
          return {
             ...state,
             users: [],
             numberOfPages: action.page
-         }               
+         }
       case SET_TOTAL_COUNT:
          return {
             ...state,
             totalUsersCount: action.totalCount
-         }                            
+         }
       case IS_FETCHING:
          return {
             ...state,
             isFetching: action.isFetching,
-         }                            
+         }
       case DISABLE_SUBSCRIBE_BTN:
          return {
             ...state,
-            disableSubscribeBtn: action.isFeatching 
-               ?  [...state.disableSubscribeBtn, action.userId] 
-               :  state.disableSubscribeBtn.filter(id => id !== action.userId) 
-               
-         }                            
+            disableSubscribeBtn: action.isFeatching
+               ? [...state.disableSubscribeBtn, action.userId]
+               : state.disableSubscribeBtn.filter(id => id !== action.userId)
+
+         }
       default:
          return state;
    }
 }
 
-export let follow = (id) => {
+export type FollowType = {
+   type: typeof FOLLOW
+   id: number
+}
+export let follow = (id: number): FollowType => {
    return {
-      type: 'FOLLOW',
+      type: FOLLOW,
       id: id,
    }
 }
-export let unfollow = (id) => {
+export let unfollow = (id: number) => {
    return {
-      type: 'UNFOLLOW',
+      type: UNFOLLOW,
       id: id,
    }
 }
-export let setUsers = (users) => {
+export let setUsers = (users: Array<UsersType>) => {
    return {
-      type: 'SET-USERS',
+      type: SET_USERS,
       users: users,
    }
 }
-export let setPage = (page) => {
+export let setPage = (page: number) => {
    return {
-      type: 'SET-PAGE',
+      type: SET_PAGE,
       page: page,
    }
 }
-export let setTotalCount = (number) => {
+export let setTotalCount = (number: number) => {
    return {
-      type: 'SET-TOTAL-COUNT',
+      type: SET_TOTAL_COUNT,
       totalCount: number,
    }
 }
-export let isFetching = (isFetching) => {
+export let isFetching = (isFetching: boolean) => {
    return {
-      type: 'IS_FETCHING',
+      type: IS_FETCHING,
       isFetching,
    }
 }
-export let disableBtn = (userId, isFeatching) => {
+export let disableBtn = (userId: number, isFeatching: boolean) => {
    return {
-      type: 'DISABLE_SUBSCRIBE_BTN',
+      type: DISABLE_SUBSCRIBE_BTN,
       userId, isFeatching
 
    }
 }
 
-export const getUsersThankCreator = (numberOfPages, numberOfUsers) => {
-   return (dispatch) => {
+export const getUsersThankCreator = (numberOfPages: number, numberOfUsers: number) => {
+   return (dispatch: any) => {
       dispatch(isFetching(true))
       userAPI.getUsers(numberOfPages, numberOfUsers).then(data => {
          dispatch(setUsers(data.items))
@@ -129,8 +146,8 @@ export const getUsersThankCreator = (numberOfPages, numberOfUsers) => {
    }
 }
 
-export const unfollowThunk = (id) => {
-   return (dispatch) => {
+export const unfollowThunk = (id: number) => {
+   return (dispatch: any) => {
       dispatch(disableBtn(id, true))
       followedAPI.deleteFollow(id).then(data => {
          if (data.resultCode === 0) {
@@ -140,15 +157,15 @@ export const unfollowThunk = (id) => {
       })
    }
 }
-export const followThunk = (id) => {
-   return (dispatch) => {
+export const followThunk = (id: number) => {
+   return (dispatch: any) => {
       dispatch(disableBtn(id, true))
       followedAPI.postFollow(id).then(data => {
          if (data.resultCode === 0) {
             dispatch(follow(id))
          }
          dispatch(disableBtn(id, false))
-      }) 
+      })
    }
 }
 
