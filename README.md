@@ -1,5 +1,5 @@
 ### Валидация формы логин  
-![](/gifvalidation.gif)  
+![](/gif/validation.gif)  
 
 
 
